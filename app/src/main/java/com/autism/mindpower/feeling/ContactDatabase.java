@@ -11,8 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Arash Nase on 4/17/2016.
- * This class creates Java model objects
- * It maintains the database connection and supports adding new comments and fetching all comments.
+ * It maintains the database connection and supports adding new contact or removing from database.
  */
 public class ContactDatabase {
 
@@ -49,8 +48,8 @@ public class ContactDatabase {
 
 
 
-    // Add a new comment to database
-    public void insertComment(Contact contact){
+    // Add a new contact to database
+    public void insertContact(Contact contact){
         ContentValues values = new ContentValues();
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER, contact.getNumber());
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NAME, contact.getName());
@@ -60,15 +59,15 @@ public class ContactDatabase {
         db.close();
     }
 
-    // Delete a comment from the database
-    public void deleteComment(Contact contact) {
+    // Delete a contact from the database
+    public void deleteContact(Contact contact) {
         db.execSQL("DELETE FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
                 ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "=\"" + contact.getNumber() + "\";");
     }
 
 
 
-    // Get ALL comments in the database, via an ArrayList
+    // Get ALL contacts in the database, via an ArrayList
     public ArrayList<Contact> getContacts(){
         ArrayList<Contact> contacts = new ArrayList<Contact>();
         Cursor cursor = db.query(ContactDatabaseHelper.TABLE_CONTACTS,
@@ -76,7 +75,7 @@ public class ContactDatabase {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Contact contact = cursorToComment(cursor);
+            Contact contact = cursorToContact(cursor);
             contacts.add(contact);
             cursor.moveToNext();
         }
@@ -86,8 +85,8 @@ public class ContactDatabase {
     }
 
 
-    // Change a cursor(result of a query) to a Comment object, and return the Comment
-    private Contact cursorToComment(Cursor cursor) {
+    // Change a cursor(result of a query) to a Contact object, and return the Contact
+    private Contact cursorToContact(Cursor cursor) {
         if(cursor.isBeforeFirst() || cursor.isAfterLast())
             return null;
 

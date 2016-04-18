@@ -17,7 +17,7 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     private static final String DB_NAME = "contacts.sqlite";    //or .db name of the file
     private static final int VERSION = 1;
 
-    public static final String TABLE_CONTACTS = "comment";      //name of the table
+    public static final String TABLE_CONTACTS = "contact";      //name of the table
     public static final String COLUMN_ID = "_id";   //primary key of the table
     public static final String COLUMN_CONTACT_NUMBER = "number";
     public static final String COLUMN_CONTACT_NAME = "name";
@@ -33,7 +33,7 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
 
 
 
-    //create the comment table
+    //create the contact table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createQuery = "CREATE TABLE " + TABLE_CONTACTS + "(" +
