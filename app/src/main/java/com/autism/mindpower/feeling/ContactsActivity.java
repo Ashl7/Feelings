@@ -6,9 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * Created by ASHL7 on 4/15/2016.
+ * Created by Arash Nase on 4/15/2016.
+ * The actvity where users add/remove contacts to the database of people the app should send text to
  */
-public class ContactsActivity implements AppCompatActivity {
+public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
