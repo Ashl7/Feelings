@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.autism.mindpower.feeling.SendTextFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:minHeight="512dp"
+        android:minWidth="256dp">
+
+        <TextView
+            android:id="@+id/to_phone_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number" />
+
+        <EditText
+            android:id="@+id/to_phone_number_et"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
+
+        <TextView
+            android:id="@+id/sms_message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SMS Message" />
+
+        <EditText
+            android:id="@+id/sms_message_et"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:maxLines="3" />
+
+        <Button android:id="@+id/send_sms_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Send SMS"
+            android:clickable="false" />
+    </LinearLayout>
+
+
+</FrameLayout>
