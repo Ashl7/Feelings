@@ -1,16 +1,28 @@
 package com.autism.mindpower.feeling;
 
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements SendTextFragment.OnFragmentInteractionListener {
+
+    public static final int REQUEST_CONTACTS = 0;
+    public static final int REQUEST_SMS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SmsHelper.checkAndRequestSmsPermission(this, REQUEST_SMS);
     }
 
     @Override
@@ -34,4 +46,41 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    void showSendTextDialog(View v) {
+        // Create the fragment and show it as a dialog
+        FragmentManager fm = getSupportFragmentManager();
+        // TODO specify what will get sent to the Fragment
+        DialogFragment newFragment = SendTextFragment.newInstance("A title", "A subtitle");
+        newFragment.show(fm, "Another subtitle");
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /**
+     * Callback received when a permissions request has been completed.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_SMS) {
+            // Received permission result for SMS
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // SMS permission has been granted
+                Toast.makeText(getApplicationContext(), "SMS permission granted",
+                        Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "SMS permission NOT granted. Turn it on in Settings -> Apps",
+                        Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+
 }
