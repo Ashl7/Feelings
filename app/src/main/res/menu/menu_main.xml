@@ -1,6 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_edit_contacts" android:title="@string/action_edit_contacts"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/show_text_dialog" android:title="@string/action_show_text_dialog"
+        android:orderInCategory="101" app:showAsAction="never" />
 </menu>

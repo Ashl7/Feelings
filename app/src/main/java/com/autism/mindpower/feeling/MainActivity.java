@@ -1,5 +1,6 @@
 package com.autism.mindpower.feeling;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -40,8 +41,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_edit_contacts) {
+            showContactsActivity(null);
+        }
+        else if (id == R.id.show_text_dialog) {
+            showSendTextDialog(null);
         }
 
         return super.onOptionsItemSelected(item);
@@ -53,6 +57,12 @@ public class MainActivity extends AppCompatActivity
         // TODO specify what will get sent to the Fragment
         DialogFragment newFragment = SendTextFragment.newInstance("A title", "A subtitle");
         newFragment.show(fm, "Another subtitle");
+    }
+
+    void showContactsActivity(View v) {
+        // Create the fragment and show it as a dialog
+        Intent intent = new Intent(this, ContactsActivity.class);
+        startActivity(intent);
     }
 
     @Override

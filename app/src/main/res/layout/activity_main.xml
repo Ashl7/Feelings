@@ -12,11 +12,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click Me"
+        android:text="Show Contacts Activity"
         android:id="@+id/button"
         android:textColor="#ef0000"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="showContactsActivity" />
 
     <Button
         android:layout_width="wrap_content"
