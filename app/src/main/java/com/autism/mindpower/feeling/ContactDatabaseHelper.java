@@ -36,9 +36,9 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     //create the contact table
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createQuery = "CREATE TABLE " + TABLE_CONTACTS + "(" +
+        String createQuery = "CREATE TABLE " + TABLE_CONTACTS + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_CONTACT_NUMBER + "TEXT, " +
+                COLUMN_CONTACT_NUMBER + " TEXT, " +
                 COLUMN_CONTACT_NAME + " TEXT, " +
                 COLUMN_CONTACT_DATE_ADDED + " TEXT " +
                 ");";

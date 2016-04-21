@@ -17,6 +17,7 @@
         android:textColor="#ef0000"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
         android:onClick="showContactsActivity" />
 
     <Button
@@ -28,5 +29,17 @@
         android:onClick="showSendTextDialog"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click for ContactActivity"
+        android:id="@+id/contact_activity_caller"
+        android:layout_below="@+id/show_sms_fragment"
+        android:layout_alignLeft="@+id/show_sms_fragment"
+        android:layout_alignStart="@+id/show_sms_fragment"
+        android:layout_marginTop="119dp"
+        android:layout_alignRight="@+id/show_sms_fragment"
+        android:layout_alignEnd="@+id/show_sms_fragment" />
 
 </RelativeLayout>
