@@ -23,6 +23,14 @@
             android:name=".ContactsActivity"
             android:label="@string/contactActivity" >
         </activity>
+        <activity
+            android:name=".PinSettingActivity"
+            android:label="@string/pin_enter" >
+        </activity>
+        <activity
+            android:name=".PinActivity"
+            android:label="@string/pin_set" >
+        </activity>
     </application>
 
 </manifest>

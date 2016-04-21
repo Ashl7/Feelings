@@ -1,6 +1,7 @@
 package com.autism.mindpower.feeling;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 /**
  * Created by David Nguyen on 4/20/2016.
  */
-public class PinSettingActivity extends AppCompatActivity{
+public class PinSettingActivity extends AppCompatActivity {
 
     EditText passwordView;
     public static final String Default = "N/A";
@@ -28,10 +29,15 @@ public class PinSettingActivity extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences("pinNumber", Context.MODE_PRIVATE);
         String userPin = sharedPreferences.getString("password", Default);
         if (userPin.equals(passwordView.getText().toString())) {
-            Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ContactsActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Not the right PIN number", Toast.LENGTH_SHORT).show();
         }
-        else {
-            Toast.makeText(this, "No the right pin number", Toast.LENGTH_SHORT).show();
-        }
+    }
+
+    public void back(View v) {
+        finish();
     }
 }

@@ -27,15 +27,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contactActivityButton = (Button) findViewById(R.id.contact_activity_caller);
-        contactActivityButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         SmsHelper.checkAndRequestSmsPermission(this, REQUEST_SMS);
     }
 
@@ -73,8 +64,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     void showContactsActivity(View v) {
-        // Create the fragment and show it as a dialog
         Intent intent = new Intent(this, ContactsActivity.class);
+        startActivity(intent);
+    }
+
+    void showSetPinActivity(View v) {
+        Intent intent = new Intent(this, PinActivity.class);
+        startActivity(intent);
+    }
+
+    void showEnterPinActivity(View v) {
+        Intent intent = new Intent(this, PinSettingActivity.class);
         startActivity(intent);
     }
 

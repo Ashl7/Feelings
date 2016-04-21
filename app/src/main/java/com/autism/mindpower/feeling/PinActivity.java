@@ -31,5 +31,6 @@ public class PinActivity extends AppCompatActivity {
 
         editor.commit();
         Toast.makeText(this, "Created Pin", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

@@ -5,41 +5,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="Goooooo MindPower!!!!" android:layout_width="wrap_content"
+    <TextView android:text="What are you feeling?" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Contacts Activity"
-        android:id="@+id/button"
-        android:textColor="#ef0000"
+        android:text="@string/pin_set"
+        android:id="@+id/buttonPinSet"
+        android:onClick="showSetPinActivity"
+        android:layout_above="@+id/buttonPinEnter"
+        android:layout_alignLeft="@+id/buttonPinEnter"
+        android:layout_alignStart="@+id/buttonPinEnter" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pin_enter"
+        android:id="@+id/buttonPinEnter"
+        android:onClick="showEnterPinActivity"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:onClick="showContactsActivity" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show SMS dialog"
-        android:id="@+id/show_sms_fragment"
-        android:textColor="#ef0000"
-        android:onClick="showSendTextDialog"
-        android:layout_below="@+id/button"
         android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="click for ContactActivity"
-        android:id="@+id/contact_activity_caller"
-        android:layout_below="@+id/show_sms_fragment"
-        android:layout_alignLeft="@+id/show_sms_fragment"
-        android:layout_alignStart="@+id/show_sms_fragment"
-        android:layout_marginTop="119dp"
-        android:layout_alignRight="@+id/show_sms_fragment"
-        android:layout_alignEnd="@+id/show_sms_fragment" />
 
 </RelativeLayout>
