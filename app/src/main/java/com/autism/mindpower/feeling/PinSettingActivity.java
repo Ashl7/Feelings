@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class PinSettingActivity extends AppCompatActivity{
 
     EditText passwordView;
-    public static final String Default = "N/A";
+    public static final String Default = "N/";
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
