@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity
         // Create the fragment and show it as a dialog
         FragmentManager fm = getSupportFragmentManager();
         // TODO specify what will get sent to the Fragment
-        DialogFragment newFragment = SendTextFragment.newInstance("A title", "A subtitle");
-        newFragment.show(fm, "Another subtitle");
+        DialogFragment newFragment = SendTextFragment.newInstance(R.drawable.emoji_laugh, "Emotion", "I'm feeling an emotion. What is it?");
+        newFragment.show(fm, null);
     }
 
     void showContactsActivity(View v) {

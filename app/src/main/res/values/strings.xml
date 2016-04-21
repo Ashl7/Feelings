@@ -8,4 +8,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_edit_contacts">Edit contacts</string>
     <string name="action_show_text_dialog">Show SMS dialog</string>
+    <string name="text_tell_person">Tell:</string>
+    <string name="text_emotion_placeholder">Placeholder</string>
+    <string name="button_send">Send</string>
+    <string name="text_im_feeling">I\'m feeling %1$s</string>
 </resources>

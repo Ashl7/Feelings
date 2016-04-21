@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,17 +28,20 @@ import android.widget.Toast;
 public class SendTextFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM_EMJOI = "paramEmoji";
+    private static final String ARG_PARAM_NAME = "paramName";
+    private static final String ARG_PARAM_CAPTION = "paramCaption";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int mParamEmoji;
+    private String mParamName;
+    private String mParamCaption;
 
     private OnFragmentInteractionListener mListener;
 
+    private TextView emojiName;
+    private ImageView emojiPicture;
     private EditText toPhoneNumberET;
-    private EditText smsMessageET;
 
     public SendTextFragment() {
         // Required empty public constructor
@@ -46,16 +51,18 @@ public class SendTextFragment extends DialogFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param paramEmoji Path to resource.
+     * @param paramName Name.
+     * @param paramCaption Text associated with emoji to send as SMS.
      * @return A new instance of fragment SendTextFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SendTextFragment newInstance(String param1, String param2) {
+    public static SendTextFragment newInstance(int paramEmoji, String paramName, String paramCaption) {
         SendTextFragment fragment = new SendTextFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM_EMJOI, paramEmoji);
+        args.putString(ARG_PARAM_NAME, paramName);
+        args.putString(ARG_PARAM_CAPTION, paramCaption);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,8 +71,9 @@ public class SendTextFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParamEmoji = getArguments().getInt(ARG_PARAM_EMJOI);
+            mParamName = getArguments().getString(ARG_PARAM_NAME);
+            mParamCaption = getArguments().getString(ARG_PARAM_CAPTION);
         }
     }
 
@@ -75,10 +83,15 @@ public class SendTextFragment extends DialogFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_send_text, container, false);
 
+        // Populate the emoji picture and the emotion from the params
+        emojiName = (TextView)view.findViewById(R.id.tvWord);
+        emojiName.setText(mParamName);
+        emojiPicture = (ImageView)view.findViewById(R.id.ivEmotion);
+        emojiPicture.setImageResource(mParamEmoji);
+
         // Assign text fields to variables so we can get them later
         toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);
-        smsMessageET = (EditText)view.findViewById(R.id.sms_message_et);
-        Button sendButton = (Button) view.findViewById(R.id.send_sms_btn);
+        Button sendButton = (Button)view.findViewById(R.id.send_sms_btn);
 
         // Button needs to have an OnClickListener set here since this is a fragment
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +145,7 @@ public class SendTextFragment extends DialogFragment {
     // Function that runs when "Send" is pressed
     public void sendSms() {
         String toPhoneNumber = toPhoneNumberET.getText().toString();
-        String smsMessage = smsMessageET.getText().toString();
+        String smsMessage = mParamCaption;
         // Check if app has permission to send an SMS
         if(SmsHelper.hasSmsPermission(getContext())) {
             SmsHelper.sendSMS(toPhoneNumber, smsMessage, getContext(), null);

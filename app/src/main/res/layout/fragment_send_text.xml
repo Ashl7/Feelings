@@ -15,6 +15,43 @@
         android:minHeight="512dp"
         android:minWidth="256dp">
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_emotion_placeholder"
+                android:textSize="48sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivEmotion"
+                android:src="@android:drawable/stat_sys_warning"
+                android:maxHeight="192dp"
+                android:maxWidth="192dp"
+                android:scaleType="centerInside"
+                android:cropToPadding="false"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/tvWord"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvTellText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tell_person"
+            android:textSize="22sp" />
+
         <TextView
             android:id="@+id/to_phone_number_tv"
             android:layout_width="wrap_content"
@@ -27,25 +64,12 @@
             android:layout_height="wrap_content"
             android:inputType="phone"/>
 
-        <TextView
-            android:id="@+id/sms_message_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SMS Message" />
-
-        <EditText
-            android:id="@+id/sms_message_et"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:minLines="1"
-            android:maxLines="3" />
-
         <Button android:id="@+id/send_sms_btn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Send SMS"
+            android:text="@string/button_send"
             android:clickable="false" />
+
     </LinearLayout>
 
 
