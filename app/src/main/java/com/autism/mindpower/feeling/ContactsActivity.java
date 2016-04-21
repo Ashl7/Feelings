@@ -37,7 +37,7 @@ public class ContactsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        db = new ContactDatabase(this);
+        db = new ContactDatabase(getApplicationContext());
         db.open();
 
         editText = (EditText) findViewById(R.id.editText);
