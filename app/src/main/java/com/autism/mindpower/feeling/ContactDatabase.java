@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -37,8 +38,14 @@ public class ContactDatabase {
 
 
     // make sure to use open() AND close() whenever you use the database
-    public void open() throws SQLException {
-        db = dbHelper.getWritableDatabase();   //get a reference to the database
+    public void open() {
+        try {
+            db = dbHelper.getWritableDatabase();   //get a reference to the database
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            Log.v(TAG, "Opening database failed");
+        }
     }
 
     public void close(){
@@ -56,7 +63,6 @@ public class ContactDatabase {
         //values.put(ContactDatabaseHelper.COLUMN_CONTACT_DATE_ADDED, getDate());
 
         db.insert(ContactDatabaseHelper.TABLE_CONTACTS, null, values);
-        db.close();
     }
 
     // Delete a contact from the database
