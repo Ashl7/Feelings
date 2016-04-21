@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 /**
  * Created by Arash Nase on 4/15/2016.
@@ -13,17 +15,11 @@ import android.widget.EditText;
  */
 public class ContactsActivity extends AppCompatActivity {
 
-    private Button button;
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
-    private Button save_button;
+    private ImageButton button;
+    private ImageButton button1;
+    private ImageButton button2;
+    private ImageButton button3;
+    private ImageButton button4;
 
     private EditText editText;
     private EditText editText1;
@@ -31,11 +27,74 @@ public class ContactsActivity extends AppCompatActivity {
     private EditText editText3;
     private EditText editText4;
 
+    private Button saveButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+
+
+        button = (ImageButton) findViewById(R.id.imageButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+        button1 = (ImageButton) findViewById(R.id.imageButton1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+        button2 = (ImageButton) findViewById(R.id.imageButton2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+        button3 = (ImageButton) findViewById(R.id.imageButton3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+        button4 = (ImageButton) findViewById(R.id.imageButton4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+
+        editText = (EditText) findViewById(R.id.editText);
+
+        editText1 = (EditText) findViewById(R.id.editText1);
+
+        editText2 = (EditText) findViewById(R.id.editText2);
+
+        editText3 = (EditText) findViewById(R.id.editText3);
+
+        editText4 = (EditText) findViewById(R.id.editText4);
+
+
+        saveButton = (Button) findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+
+
+
+
+
+
     }
 
     @Override
