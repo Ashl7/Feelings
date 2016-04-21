@@ -29,48 +29,16 @@ public class ContactsActivity extends AppCompatActivity {
 
     private Button saveButton;
 
+    ContactDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-
-        button = (ImageButton) findViewById(R.id.imageButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
-
-        button1 = (ImageButton) findViewById(R.id.imageButton1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
-
-        button2 = (ImageButton) findViewById(R.id.imageButton2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
-
-        button3 = (ImageButton) findViewById(R.id.imageButton3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
-
-        button4 = (ImageButton) findViewById(R.id.imageButton4);
-        button4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
-
+        db = new ContactDatabase(this);
+        db.open();
 
         editText = (EditText) findViewById(R.id.editText);
 
@@ -83,15 +51,47 @@ public class ContactsActivity extends AppCompatActivity {
         editText4 = (EditText) findViewById(R.id.editText4);
 
 
-        saveButton = (Button) findViewById(R.id.save_button);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        button = (ImageButton) findViewById(R.id.imageButton);
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
+               deleteContact(editText);
             }
         });
 
+        button1 = (ImageButton) findViewById(R.id.imageButton1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteContact(editText1);
+            }
+        });
 
+        button2 = (ImageButton) findViewById(R.id.imageButton2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteContact(editText2);
+            }
+        });
 
+        button3 = (ImageButton) findViewById(R.id.imageButton3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteContact(editText3);
+            }
+        });
+
+        button4 = (ImageButton) findViewById(R.id.imageButton4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteContact(editText4);
+            }
+        });
+
+        saveButton = (Button) findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addContacts();
+            }
+        });
 
 
 
@@ -110,13 +110,42 @@ public class ContactsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    // Function to delete empty the EditText and delete its number from database
+    void deleteContact(EditText editText){
+        String number = editText.getText().toString();  //get the number
+        editText.setText("");   // clear the EditText
+        db.deleteContact(new Contact(number, null));    //delete the contact from database
+    }
+
+    // Function to add contact to database
+    void addContacts() {
+        // get the numbers in edittext fields
+        String number1 = editText.getText().toString();
+        String number2 = editText1.getText().toString();
+        String number3 = editText2.getText().toString();
+        String number4 = editText3.getText().toString();
+        String number5 = editText4.getText().toString();
+
+        // if there is a number entered, add it to the database
+        if (!number1.equals(""))
+            db.insertContact(new Contact(number1,null));
+        if (!number1.equals(""))
+            db.insertContact(new Contact(number2,null));
+        if (!number1.equals(""))
+            db.insertContact(new Contact(number3,null));
+        if (!number1.equals(""))
+            db.insertContact(new Contact(number4,null));
+        if (!number1.equals(""))
+            db.insertContact(new Contact(number5,null));
     }
 
 }
