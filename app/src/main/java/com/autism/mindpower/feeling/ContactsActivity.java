@@ -122,8 +122,10 @@ public class ContactsActivity extends AppCompatActivity {
     // Function to delete empty the EditText and delete its number from database
     void deleteContact(EditText editText){
         String number = editText.getText().toString();  //get the number
-        editText.setText("");   // clear the EditText
-        db.deleteContact(new Contact(number, null));    //delete the contact from database
+        if (!number.isEmpty()) {
+            editText.setText("");   // clear the EditText
+            db.deleteContact(new Contact(number, null));    //delete the contact from database
+        }
     }
 
     // Function to add contact to database
@@ -137,15 +139,15 @@ public class ContactsActivity extends AppCompatActivity {
 
         // if there is a number entered, add it to the database
         if (!number1.equals(""))
-            db.insertContact(new Contact(number1,null));
-        if (!number1.equals(""))
-            db.insertContact(new Contact(number2,null));
-        if (!number1.equals(""))
-            db.insertContact(new Contact(number3,null));
-        if (!number1.equals(""))
-            db.insertContact(new Contact(number4,null));
-        if (!number1.equals(""))
-            db.insertContact(new Contact(number5,null));
+            db.insertContact(new Contact(number1,"Contact 1"));
+        if (!number2.equals(""))
+            db.insertContact(new Contact(number2,"Contact 2"));
+        if (!number3.equals(""))
+            db.insertContact(new Contact(number3,"Contact 3"));
+        if (!number4.equals(""))
+            db.insertContact(new Contact(number4,"Contact 4"));
+        if (!number5.equals(""))
+            db.insertContact(new Contact(number5,"Contact 5"));
     }
 
 }

@@ -23,8 +23,6 @@
         <activity
             android:name=".ContactsActivity"
             android:label="@string/contactActivity" >
-            <intent-filter>
-            </intent-filter>
         </activity>
     </application>
 
