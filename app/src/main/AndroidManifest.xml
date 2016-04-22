@@ -24,16 +24,18 @@
             android:label="@string/contactActivity" >
         </activity>
         <activity
-            android:name=".PasswordEditActivity"
-            android:label="@string/pin_enter" >
-        </activity>
-        <activity
-            android:name=".PasswordActivity"
-            android:label="@string/pin_set" >
+            android:name=".PasswordCreateActivity"
+            android:noHistory="true"
+            android:label="@string/set_password" >
         </activity>
         <activity
             android:name=".SettingActivity"
             android:label="@string/action_settings" >
+        </activity>
+        <activity
+            android:name=".PasswordCheckActivity"
+            android:noHistory="true"
+            android:label="Wait..." >
         </activity>
     </application>
 

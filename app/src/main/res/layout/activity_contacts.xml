@@ -8,12 +8,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Select the Contacts"
+        android:text="Enter the Contacts Numbers"
         android:id="@+id/select_contact_textview"
         android:layout_gravity="center_horizontal"
         android:paddingTop="20dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
 
 
 
@@ -24,9 +25,9 @@
         android:ems="10"
         android:id="@+id/editText"
         android:layout_below="@+id/select_contact_textview"
-        android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/save_button"
-        android:layout_alignEnd="@+id/save_button" />
+        android:layout_alignLeft="@+id/select_contact_textview"
+        android:layout_alignStart="@+id/select_contact_textview"
+        android:layout_marginTop="30dp" />
 
     <ImageButton
         android:layout_width="40dp"
@@ -34,8 +35,8 @@
         android:id="@+id/imageButton"
         android:src="@drawable/button_minus_red"
         android:layout_above="@+id/editText1"
-        android:layout_toRightOf="@+id/select_contact_textview"
-        android:layout_toEndOf="@+id/select_contact_textview" />
+        android:layout_alignRight="@+id/select_contact_textview"
+        android:layout_alignEnd="@+id/select_contact_textview" />
 
 
 
@@ -132,12 +133,14 @@
         android:layout_alignStart="@+id/imageButton3" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save and Proceed"
         android:id="@+id/save_button"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/editText4"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
 </RelativeLayout>

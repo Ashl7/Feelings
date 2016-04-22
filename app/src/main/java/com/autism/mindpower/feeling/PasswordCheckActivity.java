@@ -14,6 +14,9 @@ import android.widget.Toast;
 /**
  * Created by Arash Nase on 4/22/2016.
  * Activity to check if the user is permitted before letting him/her enter setting mode
+ *
+ * Note: In order for the activity to be killed right before starting the SettingActivity, added
+ * android:noHistory="true" to AndroidManifest definition of the activity
  */
 
 

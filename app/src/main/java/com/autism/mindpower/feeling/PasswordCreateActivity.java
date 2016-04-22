@@ -12,9 +12,11 @@ import android.widget.Toast;
 /**
  * Created by David Nguyen on 4/20/2016.
  * Background work to storage the pin number when first register
+ *
+ * Changed it in manifast so that no activity could go back to it by pressing back button
  */
 
-public class PasswordActivity extends AppCompatActivity {
+public class PasswordCreateActivity extends AppCompatActivity {
 
 
     EditText password;
@@ -22,7 +24,7 @@ public class PasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password);
+        setContentView(R.layout.activity_create_password);
         password = (EditText) findViewById(R.id.etPassword);
     }
 
@@ -34,6 +36,8 @@ public class PasswordActivity extends AppCompatActivity {
         editor.commit();
 
         Toast.makeText(this, "Created New Password", Toast.LENGTH_SHORT).show();
-        finish();
+
+        Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
+        startActivity(intent);
     }
 }

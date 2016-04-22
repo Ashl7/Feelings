@@ -8,8 +8,10 @@ import android.view.View;
 
 /**
  * Created by David Nguyen on 4/21/2016.
- * Settings to chose and edit
+ *
  */
+
+
 public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,13 +25,13 @@ public class SettingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void editPin (View view) {
+    public void changePassword(View view) {
         // Go to pin activity
-        Intent intent = new Intent(this, PasswordActivity.class);
+        Intent intent = new Intent(this, PasswordCreateActivity.class);
         startActivity(intent);
     }
 
-    public void home (View view) {
+    public void goHome(View view) {
         //Return to home page
         finish();
     }

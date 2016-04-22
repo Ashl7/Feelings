@@ -90,6 +90,7 @@ public class ContactsActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 addContacts();
+                finish();
             }
         });
 

@@ -32,17 +32,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         sharedPref = getSharedPreferences(getString(R.string.password), Context.MODE_PRIVATE);
         boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
-        // if pin is not set, go to the PasswordActivity to set it up for the first up
+        // if pin is not set, go to the PasswordCreateActivity to set it up for the first up
         if (!passwordSet) {
-            Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+            Intent intent = new Intent(getApplicationContext(), PasswordCreateActivity.class);
             startActivity(intent);
         }
-
-        //if the pin is set, go on with this activity
-        setContentView(R.layout.activity_main);
 
         emojiList = Emoji.createEmojiList();
         ArrayEmojiAdapter eAdapter =
@@ -78,15 +76,15 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_setting) {
-            openSettingActivity();
+            checkPassowrd();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
 
-    void openSettingActivity() {
-        Intent intent = new Intent(this, SettingActivity.class);
+    void checkPassowrd() {
+        Intent intent = new Intent(this, PasswordCheckActivity.class);
         startActivity(intent);
     }
 
