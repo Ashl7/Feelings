@@ -14,4 +14,6 @@
     <string name="text_im_feeling">I\'m feeling %1$s</string>
     <string name="pin_enter">Enter PIN</string>
     <string name="pin_set">Set PIN</string>
+    <string name="text_how_feeling">How are you feeling?</string>
+    <string name="text_told_person">Told %1$s</string>
 </resources>

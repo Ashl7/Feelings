@@ -11,8 +11,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
     implements SendTextFragment.OnFragmentInteractionListener {
@@ -20,12 +24,28 @@ public class MainActivity extends AppCompatActivity
     public static final int REQUEST_CONTACTS = 0;
     public static final int REQUEST_SMS = 1;
 
+    private ArrayList<Emoji> el;
+    private GridView emojiGridView;
+
     private Button contactActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        el = Emoji.createEmojiList();
+        ArrayEmojiAdapter eAdapter =
+                new ArrayEmojiAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, el);
+        emojiGridView = (GridView) findViewById(R.id.gvEmoji);
+        emojiGridView.setAdapter(eAdapter);
+        emojiGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Emoji e = (Emoji)parent.getItemAtPosition(position);
+                showSendTextDialog(e);
+            }
+        });
 
         SmsHelper.checkAndRequestSmsPermission(this, REQUEST_SMS);
     }
@@ -49,17 +69,17 @@ public class MainActivity extends AppCompatActivity
             showContactsActivity(null);
         }
         else if (id == R.id.show_text_dialog) {
-            showSendTextDialog(null);
+            showSendTextDialog(new Emoji(R.drawable.emoji_hd_placeholder, "Emotion", "I'm feeling an emotion. What is it?"));
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    void showSendTextDialog(View v) {
+    void showSendTextDialog(Emoji e) {
         // Create the fragment and show it as a dialog
         FragmentManager fm = getSupportFragmentManager();
         // TODO specify what will get sent to the Fragment
-        DialogFragment newFragment = SendTextFragment.newInstance(R.drawable.emoji_laugh, "Emotion", "I'm feeling an emotion. What is it?");
+        DialogFragment newFragment = SendTextFragment.newInstance(e.getDrawableRes(), e.getName(), e.getCaption());
         newFragment.show(fm, null);
     }
 
