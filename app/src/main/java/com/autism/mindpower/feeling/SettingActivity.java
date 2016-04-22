@@ -25,7 +25,7 @@ public class SettingActivity extends AppCompatActivity {
 
     public void editPin (View view) {
         // Go to pin activity
-        Intent intent = new Intent(this, PinActivity.class);
+        Intent intent = new Intent(this, PasswordActivity.class);
         startActivity(intent);
     }
 

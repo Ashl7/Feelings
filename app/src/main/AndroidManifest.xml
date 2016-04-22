@@ -24,11 +24,11 @@
             android:label="@string/contactActivity" >
         </activity>
         <activity
-            android:name=".PinSettingActivity"
+            android:name=".PasswordEditActivity"
             android:label="@string/pin_enter" >
         </activity>
         <activity
-            android:name=".PinActivity"
+            android:name=".PasswordActivity"
             android:label="@string/pin_set" >
         </activity>
         <activity

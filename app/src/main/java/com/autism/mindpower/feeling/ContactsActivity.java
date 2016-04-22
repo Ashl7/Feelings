@@ -29,7 +29,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     private Button saveButton;
 
-    ContactDatabase db;
+    private ContactDatabase db;
 
 
     @Override
@@ -127,7 +127,6 @@ public class ContactsActivity extends AppCompatActivity {
         if (!number5.equals(""))
             db.insertContact(new Contact(number5,"Contact 5"));
         // Close the activity
-        finish();
     }
 
 }

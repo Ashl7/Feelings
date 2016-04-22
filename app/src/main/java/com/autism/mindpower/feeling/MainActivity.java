@@ -1,6 +1,8 @@
 package com.autism.mindpower.feeling;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -12,10 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -24,19 +24,29 @@ public class MainActivity extends AppCompatActivity
     public static final int REQUEST_CONTACTS = 0;
     public static final int REQUEST_SMS = 1;
 
-    private ArrayList<Emoji> el;
+    private ArrayList<Emoji> emojiList;
     private GridView emojiGridView;
 
-    private Button contactActivityButton;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
+        // if pin is not set, go to the PasswordActivity to set it up for the first up
+        if (!passwordSet) {
+            Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+            startActivity(intent);
+        }
+
+        //if the pin is set, go on with this activity
         setContentView(R.layout.activity_main);
 
-        el = Emoji.createEmojiList();
+        emojiList = Emoji.createEmojiList();
         ArrayEmojiAdapter eAdapter =
-                new ArrayEmojiAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, el);
+                new ArrayEmojiAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, emojiList);
         emojiGridView = (GridView) findViewById(R.id.gvEmoji);
         emojiGridView.setAdapter(eAdapter);
         emojiGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,12 +60,14 @@ public class MainActivity extends AppCompatActivity
         SmsHelper.checkAndRequestSmsPermission(this, REQUEST_SMS);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -65,15 +77,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_edit_contacts) {
-            showContactsActivity(null);
-        }
-        else if (id == R.id.show_text_dialog) {
-            showSendTextDialog(new Emoji(R.drawable.emoji_hd_placeholder, "Emotion", "I'm feeling an emotion. What is it?"));
+        if (id == R.id.action_setting) {
+            openSettingActivity();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    void openSettingActivity() {
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+    }
+
 
     void showSendTextDialog(Emoji e) {
         // Create the fragment and show it as a dialog
@@ -83,25 +99,12 @@ public class MainActivity extends AppCompatActivity
         newFragment.show(fm, null);
     }
 
-    void showContactsActivity(View v) {
-        Intent intent = new Intent(this, ContactsActivity.class);
-        startActivity(intent);
-    }
-
-    void showSetPinActivity(View v) {
-        Intent intent = new Intent(this, PinActivity.class);
-        startActivity(intent);
-    }
-
-    void showEnterPinActivity(View v) {
-        Intent intent = new Intent(this, PinSettingActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
+        // Don't delete, it's a method needed by OnFragmentInteractionListener
     }
+
 
     /**
      * Callback received when a permissions request has been completed.
