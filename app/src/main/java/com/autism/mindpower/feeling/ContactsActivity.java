@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 /**
  * Created by Arash Nase on 4/15/2016.
  * The actvity where users add/remove contacts to the database of people the app should send text to
@@ -41,16 +43,14 @@ public class ContactsActivity extends AppCompatActivity {
         db.open();
 
         editText = (EditText) findViewById(R.id.editText);
-
         editText1 = (EditText) findViewById(R.id.editText1);
-
         editText2 = (EditText) findViewById(R.id.editText2);
-
         editText3 = (EditText) findViewById(R.id.editText3);
-
         editText4 = (EditText) findViewById(R.id.editText4);
 
+        fillEditTexts(); //with contacts already saved in database
 
+        // Delete Buttons
         button = (ImageButton) findViewById(R.id.imageButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -86,6 +86,7 @@ public class ContactsActivity extends AppCompatActivity {
             }
         });
 
+        // Save Button
         saveButton = (Button) findViewById(R.id.save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -94,8 +95,26 @@ public class ContactsActivity extends AppCompatActivity {
             }
         });
 
+    }
 
 
+    // If there are Contacts in the database, populate the editTexts
+    void fillEditTexts() {
+        ArrayList<Contact> contactArrayList;  //get all the contacts objects saved in database
+        ArrayList<EditText> editTextsArrayList = new ArrayList<EditText>();
+
+        contactArrayList = db.getContacts();
+
+        editTextsArrayList.add(editText);
+        editTextsArrayList.add(editText1);
+        editTextsArrayList.add(editText2);
+        editTextsArrayList.add(editText3);
+        editTextsArrayList.add(editText4);
+
+        // if there is any contact in database, put it in the editText
+        for (int i = 0; i < contactArrayList.size(); i++) {
+            editTextsArrayList.get(i).setText(contactArrayList.get(i).getNumber().toString());
+        }
     }
 
     // Function to delete empty the EditText and delete its number from database
@@ -127,7 +146,9 @@ public class ContactsActivity extends AppCompatActivity {
             db.insertContact(new Contact(number4,"Contact 4"));
         if (!number5.equals(""))
             db.insertContact(new Contact(number5,"Contact 5"));
-        // Close the activity
+
+        // Close db
+        db.close();
     }
 
 }
