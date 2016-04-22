@@ -10,11 +10,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -42,6 +47,9 @@ public class SendTextFragment extends DialogFragment {
     private TextView emojiName;
     private ImageView emojiPicture;
     private EditText toPhoneNumberET;
+    private ListView contactsListView;
+
+    private ArrayList<Contact> cl;
 
     public SendTextFragment() {
         // Required empty public constructor
@@ -93,11 +101,25 @@ public class SendTextFragment extends DialogFragment {
         toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);
         Button sendButton = (Button)view.findViewById(R.id.send_sms_btn);
 
+        cl = getContactsFromDatabase();
+        ArrayContactAdapter cAdapter =
+                new ArrayContactAdapter(getContext(), android.R.layout.simple_list_item_1, cl);
+        contactsListView = (ListView)view.findViewById(R.id.lvContacts);
+        contactsListView.setAdapter(cAdapter);
+        contactsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Contact c = (Contact)parent.getItemAtPosition(position);
+                sendSms(c.getNumber());
+            }
+        });
+
         // Button needs to have an OnClickListener set here since this is a fragment
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendSms();
+                String toPhoneNumber = toPhoneNumberET.getText().toString();
+                sendSms(toPhoneNumber);
             }
         });
         return view;
@@ -142,13 +164,22 @@ public class SendTextFragment extends DialogFragment {
         void onFragmentInteraction(Uri uri);
     }
 
+    ArrayList<Contact> getContactsFromDatabase() {
+        ContactDatabase db = new ContactDatabase(getContext());
+        db.open();
+        ArrayList<Contact> cl = db.getContacts();
+        db.close();
+        return cl;
+    }
+
     // Function that runs when "Send" is pressed
-    public void sendSms() {
-        String toPhoneNumber = toPhoneNumberET.getText().toString();
+    void sendSms(String number) {
         String smsMessage = mParamCaption;
         // Check if app has permission to send an SMS
         if(SmsHelper.hasSmsPermission(getContext())) {
-            SmsHelper.sendSMS(toPhoneNumber, smsMessage, getContext(), null);
+            SmsHelper.sendSMS(number, smsMessage, getContext(), null);
+            Toast.makeText(getContext(), "Sent",
+                    Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(getContext(), "Unable to send text - turn on the SMS permission in Settings -> Apps",
