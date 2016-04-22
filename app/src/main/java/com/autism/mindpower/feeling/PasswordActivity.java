@@ -1,6 +1,7 @@
 package com.autism.mindpower.feeling;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,10 @@ import android.widget.Toast;
  * Created by David Nguyen on 4/20/2016.
  * Background work to storage the pin number when first register
  */
+
 public class PasswordActivity extends AppCompatActivity {
+
+
     EditText password;
 
     @Override
@@ -29,7 +33,7 @@ public class PasswordActivity extends AppCompatActivity {
         editor.putBoolean("passwordSet", true);
         editor.commit();
 
-        Toast.makeText(this, "Created Pin", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Created New Password", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

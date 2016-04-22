@@ -25,7 +25,7 @@ public class PasswordEditActivity extends AppCompatActivity {
     }
 
     public void enter(View view) {
-        SharedPreferences sharedPreferences = getSharedPreferences("pinNumber", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.password), Context.MODE_PRIVATE);
         String userPin = sharedPreferences.getString("password", Default);
         if (userPin.equals(passwordView.getText().toString())) {
             Intent intent = new Intent(this, SettingActivity.class);

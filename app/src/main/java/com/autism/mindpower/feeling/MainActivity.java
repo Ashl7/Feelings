@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getSharedPreferences(getString(R.string.password), Context.MODE_PRIVATE);
         boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
         // if pin is not set, go to the PasswordActivity to set it up for the first up
         if (!passwordSet) {
