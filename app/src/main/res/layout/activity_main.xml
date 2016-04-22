@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pin_enter"
+        android:text="@string/action_settings"
         android:id="@+id/buttonPinEnter"
         android:onClick="showEnterPinActivity"
         android:layout_alignParentTop="true"

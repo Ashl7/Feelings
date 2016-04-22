@@ -29,7 +29,7 @@ public class PinSettingActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("pinNumber", Context.MODE_PRIVATE);
         String userPin = sharedPreferences.getString("password", Default);
         if (userPin.equals(passwordView.getText().toString())) {
-            Intent intent = new Intent(this, ContactsActivity.class);
+            Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
             finish();
         } else {

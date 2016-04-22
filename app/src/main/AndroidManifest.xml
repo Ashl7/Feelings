@@ -31,6 +31,10 @@
             android:name=".PinActivity"
             android:label="@string/pin_set" >
         </activity>
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/action_settings" >
+        </activity>
     </application>
 
 </manifest>
