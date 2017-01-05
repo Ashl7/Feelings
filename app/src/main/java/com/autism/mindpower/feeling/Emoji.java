@@ -4,21 +4,24 @@ import java.util.ArrayList;
 
 /**
  * Created by Jeff To on 4/21/2016.
+ * Modified by Arash Nase on 1/4/2017
+ *
+ * Class to represent an Emoji
  */
 public final class Emoji {
 
-    private final int drawableRes;
-    private final String name;
-    private final String caption;
+    private int drawableResourceId;
+    private String name;
+    private String caption;
 
-    public Emoji(int pathToDrawableRes, String inputName, String inputCaption) {
-        drawableRes = pathToDrawableRes;
-        name = inputName;
-        caption = inputCaption;
+    public Emoji(int pathToDrawableRes, String name, String caption) {
+        this.drawableResourceId = pathToDrawableRes;
+        this.name = name;
+        this.caption = caption;
     }
 
     public int getDrawableRes() {
-        return drawableRes;
+        return drawableResourceId;
     }
 
     public String getName() {
@@ -29,23 +32,18 @@ public final class Emoji {
         return caption;
     }
 
-    public static ArrayList<Emoji> createEmojiList() {
-        ArrayList<Emoji> al = new ArrayList<>();
-        al.add(new Emoji(R.drawable.emoji_happy, "Happy", "I feel happy."));
-        al.add(new Emoji(R.drawable.emoji_very_happy, "Very happy", "I feel very happy!"));
-        al.add(new Emoji(R.drawable.emoji_love, "Love", "I love this!"));
-        al.add(new Emoji(R.drawable.emoji_laughing, "Funny", "This is very funny!"));
-        al.add(new Emoji(R.drawable.emoji_sad, "Sad", "I feel sad."));
-        al.add(new Emoji(R.drawable.emoji_crying, "Very sad", "I feel very sad."));
-        al.add(new Emoji(R.drawable.emoji_angry, "Angry", "I feel angry."));
-        al.add(new Emoji(R.drawable.emoji_hurt, "Hurt", "I am hurt."));
-        al.add(new Emoji(R.drawable.emoji_sick, "Sick", "I feel sick."));
-        al.add(new Emoji(R.drawable.emoji_surprised, "Surprised", "I'm surprised!"));
-        al.add(new Emoji(R.drawable.emoji_confused, "Confused", "I'm confused."));
-        al.add(new Emoji(R.drawable.alert_bell, "Want", "I want something."));
-        al.add(new Emoji(R.drawable.alert_food, "Food", "I want food."));
-        al.add(new Emoji(R.drawable.alert_drink, "Drink", "I want a drink."));
-        al.add(new Emoji(R.drawable.alert_help, "Help!", "I need help!"));
-        return al;
+    // List of the emojies that will be displayed in
+    public static ArrayList<Emoji> getEmojiList() {
+        ArrayList<Emoji> emojies = new ArrayList<>();
+        emojies.add(new Emoji(R.drawable.emoji_happy, "Happy", "I feel happy."));
+        emojies.add(new Emoji(R.drawable.emoji_confused, "Confused", "I am confused!"));
+        emojies.add(new Emoji(R.drawable.alert_food, "Food", "I want some food."));
+        emojies.add(new Emoji(R.drawable.emoji_love, "Love", "I love this!"));
+        emojies.add(new Emoji(R.drawable.emoji_crying, "Sad", "I feel sad."));
+        emojies.add(new Emoji(R.drawable.alert_drink, "Drink", "I need some water."));
+        emojies.add(new Emoji(R.drawable.emoji_sick, "Sick", "I feel sick."));
+        emojies.add(new Emoji(R.drawable.emoji_angry, "Angry", "I am angry."));
+        emojies.add(new Emoji(R.drawable.alert_bell, "Help", "Help me!"));
+        return emojies;
     }
 }

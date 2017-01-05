@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
-        emojiList = Emoji.createEmojiList();
+        emojiList = Emoji.getEmojiList();
         ArrayEmojiAdapter eAdapter =
                 new ArrayEmojiAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, emojiList);
         emojiGridView = (GridView) findViewById(R.id.gvEmoji);
