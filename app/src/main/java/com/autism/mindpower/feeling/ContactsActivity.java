@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,17 +18,17 @@ import java.util.ArrayList;
  */
 public class ContactsActivity extends AppCompatActivity {
 
-    private ImageButton button;
-    private ImageButton button1;
-    private ImageButton button2;
-    private ImageButton button3;
-    private ImageButton button4;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
 
-    private EditText editText;
-    private EditText editText1;
-    private EditText editText2;
-    private EditText editText3;
-    private EditText editText4;
+    private TextView textView1;
+    private TextView textView2;
+    private TextView textView3;
+    private TextView textView4;
+    private TextView textView5;
 
     private Button saveButton;
 
@@ -42,49 +43,11 @@ public class ContactsActivity extends AppCompatActivity {
         db = new ContactDatabase(getApplicationContext());
         db.open();
 
-        editText = (EditText) findViewById(R.id.editText);
-        editText1 = (EditText) findViewById(R.id.editText1);
-        editText2 = (EditText) findViewById(R.id.editText2);
-        editText3 = (EditText) findViewById(R.id.editText3);
-        editText4 = (EditText) findViewById(R.id.editText4);
+
 
         fillEditTexts(); //with contacts already saved in database
 
-        // Delete Buttons
-        button = (ImageButton) findViewById(R.id.imageButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               deleteContact(editText);
-            }
-        });
 
-        button1 = (ImageButton) findViewById(R.id.imageButton1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                deleteContact(editText1);
-            }
-        });
-
-        button2 = (ImageButton) findViewById(R.id.imageButton2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                deleteContact(editText2);
-            }
-        });
-
-        button3 = (ImageButton) findViewById(R.id.imageButton3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                deleteContact(editText3);
-            }
-        });
-
-        button4 = (ImageButton) findViewById(R.id.imageButton4);
-        button4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                deleteContact(editText4);
-            }
-        });
 
         // Save Button
         saveButton = (Button) findViewById(R.id.save_button);
