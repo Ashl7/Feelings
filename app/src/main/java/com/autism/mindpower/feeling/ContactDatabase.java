@@ -22,22 +22,20 @@ public class ContactDatabase {
     private ContactDatabaseHelper dbHelper;
     private Context mAppContext;
 
-    private String[] allColumns = { ContactDatabaseHelper.COLUMN_ID, ContactDatabaseHelper.COLUMN_CONTACT_NUMBER,
-            ContactDatabaseHelper.COLUMN_CONTACT_NAME, ContactDatabaseHelper.COLUMN_CONTACT_DATE_ADDED};
+    private String[] allColumns = {
+            ContactDatabaseHelper.COLUMN_ID,
+            ContactDatabaseHelper.COLUMN_CONTACT_NUMBER,
+            ContactDatabaseHelper.COLUMN_CONTACT_NAME,
+    };
 
 
-
-
-    //INIT
+    // Initialize the database
     public ContactDatabase(Context context){
         mAppContext = context;
         dbHelper = new ContactDatabaseHelper(mAppContext);
     }
 
 
-
-
-    // make sure to use open() AND close() whenever you use the database
     public void open() {
         try {
             db = dbHelper.getWritableDatabase();   //get a reference to the database
@@ -48,11 +46,10 @@ public class ContactDatabase {
         }
     }
 
+
     public void close(){
         dbHelper.close();
     }
-
-
 
 
     // Add a new contact to database
@@ -60,10 +57,9 @@ public class ContactDatabase {
         ContentValues values = new ContentValues();
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER, contact.getNumber());
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NAME, contact.getName());
-        //values.put(ContactDatabaseHelper.COLUMN_CONTACT_DATE_ADDED, getDate());
-
         db.insert(ContactDatabaseHelper.TABLE_CONTACTS, null, values);
     }
+
 
     // Delete a contact from the database
     public void deleteContact(Contact contact) {
@@ -72,10 +68,9 @@ public class ContactDatabase {
     }
 
 
-
-    // Get ALL contacts in the database, via an ArrayList
+    // Get ALL contacts in the database in an ArrayList
     public ArrayList<Contact> getContacts(){
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        ArrayList<Contact> contacts = new ArrayList<>();
         Cursor cursor = db.query(ContactDatabaseHelper.TABLE_CONTACTS,
                 allColumns, null, null, null, null, null);
 

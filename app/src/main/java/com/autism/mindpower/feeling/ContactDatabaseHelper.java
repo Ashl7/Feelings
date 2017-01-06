@@ -11,7 +11,6 @@ import android.util.Log;
  */
 public class ContactDatabaseHelper extends SQLiteOpenHelper  {
 
-
     private static final String TAG = ContactDatabaseHelper.class.getName();
 
     private static final String DB_NAME = "contacts.sqlite";    //or .db name of the file
@@ -21,8 +20,6 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     public static final String COLUMN_ID = "_id";   //primary key of the table
     public static final String COLUMN_CONTACT_NUMBER = "number";
     public static final String COLUMN_CONTACT_NAME = "name";
-    public static final String COLUMN_CONTACT_DATE_ADDED = "date";
-
 
 
     //Create the database
@@ -32,15 +29,13 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     }
 
 
-
     //create the contact table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createQuery = "CREATE TABLE " + TABLE_CONTACTS + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_CONTACT_NUMBER + " TEXT, " +
-                COLUMN_CONTACT_NAME + " TEXT, " +
-                COLUMN_CONTACT_DATE_ADDED + " TEXT " +
+                COLUMN_CONTACT_NAME + " TEXT " +
                 ");";
         db.execSQL(createQuery);
         Log.v(TAG, "TABLE CREATED");

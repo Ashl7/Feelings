@@ -41,6 +41,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     private ContactDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class ContactsActivity extends AppCompatActivity {
         db.open();
     }
 
+
     // Buttons onClick method implementations
     public void onButton1Click(View view) {
         pickContact(1);
@@ -89,6 +91,7 @@ public class ContactsActivity extends AppCompatActivity {
         finish();
     }
 
+
     // Function that fires up Contact activity
     // viewNumber: the number of the button that was clicked (the contact number)
     public void pickContact(int viewNumber) {
@@ -98,6 +101,7 @@ public class ContactsActivity extends AppCompatActivity {
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
     }
+
 
     // Returns result from Contact activity after users selects a contact
     @Override
@@ -129,6 +133,7 @@ public class ContactsActivity extends AppCompatActivity {
         }
     }
 
+
     // Populates the textviews when activity comes up, with the contacts already in database
     void fillTextViews() {
         ArrayList<Contact> contactList = db.getContacts();
@@ -137,26 +142,15 @@ public class ContactsActivity extends AppCompatActivity {
             this.textViewList[i].setText(contactList.get(i).getName());
     }
 
+
     // Adds contact to database
-    void addContacts() {
-        String number1 = textView1.getText().toString();
-        String number2 = textView2.getText().toString();
-        String number3 = textView3.getText().toString();
-        String number4 = textView4.getText().toString();
-        String number5 = textView5.getText().toString();
+    void addContacts(Contact contact, int viewNumber) {
+        String oldText = textViewList[viewNumber-1].getText().toString();
 
-        //if there is a number entered, add it to the database
-        if (!number1.equals(""))
-            db.insertContact(new Contact(number1,"Contact 1"));
-        if (!number2.equals(""))
-            db.insertContact(new Contact(number2,"Contact 2"));
-        if (!number3.equals(""))
-            db.insertContact(new Contact(number3,"Contact 3"));
-        if (!number4.equals(""))
-            db.insertContact(new Contact(number4,"Contact 4"));
-        if (!number5.equals(""))
-            db.insertContact(new Contact(number5,"Contact 5"));
+        if (!oldText.equals(R.string.no_contact_selected_textview))
+            db.deleteContact(contact);
 
+        db.insertContact(contact);
         db.close(); //close db
     }
 
