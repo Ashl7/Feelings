@@ -28,7 +28,8 @@
         android:layout_below="@+id/select_contact_textview"
         android:layout_alignLeft="@+id/select_contact_textview"
         android:layout_alignStart="@+id/select_contact_textview"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:onClick="onButton1Click" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
         android:layout_alignRight="@+id/select_contact_textview"
         android:layout_alignEnd="@+id/select_contact_textview"
         android:layout_alignBaseline="@+id/button1"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,7 +50,8 @@
         android:text="@string/select_contact_button"
         android:layout_below="@+id/button1"
         android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_alignStart="@+id/button1"
+        android:onClick="onButton2Click" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +71,8 @@
         android:text="@string/select_contact_button"
         android:layout_below="@+id/button2"
         android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
+        android:layout_alignStart="@+id/button2"
+        android:onClick="onButton3Click" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,7 +93,8 @@
         android:text="@string/select_contact_button"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:onClick="onButton4Click" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,7 +114,8 @@
         android:text="@string/select_contact_button"
         android:layout_below="@+id/button4"
         android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+        android:layout_alignStart="@+id/button4"
+        android:onClick="onButton5Click" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -132,6 +137,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:onClick="onSaveButtonClick"
+        style="@style/my_buttons"/>
 
 </RelativeLayout>
