@@ -182,7 +182,9 @@ public class SendTextFragment extends DialogFragment {
                     Toast.LENGTH_LONG).show();
         }
         else {
-            Toast.makeText(getContext(), "Unable to send text - turn on the SMS permission in Settings -> Apps",
+            Toast.makeText(
+                    getContext(),
+                    "Unable to send text - turn on the SMS permission in Settings -> Apps",
                     Toast.LENGTH_LONG).show();
         }
         // Dismiss the fragment

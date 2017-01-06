@@ -42,7 +42,6 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     }
 
 
-
     // Upgrade the table, delete the older version
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

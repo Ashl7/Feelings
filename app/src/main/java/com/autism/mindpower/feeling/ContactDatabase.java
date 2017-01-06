@@ -18,7 +18,7 @@ public class ContactDatabase {
 
     private static final String TAG = ContactDatabase.class.getName();
 
-    private SQLiteDatabase db;
+    private SQLiteDatabase database;
     private ContactDatabaseHelper dbHelper;
     private Context mAppContext;
 
@@ -38,7 +38,7 @@ public class ContactDatabase {
 
     public void open() {
         try {
-            db = dbHelper.getWritableDatabase();   //get a reference to the database
+            database = dbHelper.getWritableDatabase();   //get a reference to the database
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -57,21 +57,22 @@ public class ContactDatabase {
         ContentValues values = new ContentValues();
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER, contact.getNumber());
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NAME, contact.getName());
-        db.insert(ContactDatabaseHelper.TABLE_CONTACTS, null, values);
+        database.insert(ContactDatabaseHelper.TABLE_CONTACTS, null, values);
     }
 
 
     // Delete a contact from the database
     public void deleteContact(Contact contact) {
-        db.execSQL("DELETE FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
-                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "=\"" + contact.getNumber() + "\";");
+        database.execSQL("DELETE FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
+                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "='" + contact.getNumber() + "';");
+        //database.delete(ContactDatabaseHelper.TABLE_CONTACTS, ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "=" + contact.getNumber(), null);
     }
 
 
     // Get ALL contacts in the database in an ArrayList
     public ArrayList<Contact> getContacts(){
         ArrayList<Contact> contacts = new ArrayList<>();
-        Cursor cursor = db.query(ContactDatabaseHelper.TABLE_CONTACTS,
+        Cursor cursor = database.query(ContactDatabaseHelper.TABLE_CONTACTS,
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();

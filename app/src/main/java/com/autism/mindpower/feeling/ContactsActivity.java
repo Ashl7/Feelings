@@ -6,9 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +20,7 @@ import java.util.HashMap;
  */
 public class ContactsActivity extends AppCompatActivity {
 
+    private static final String TAG = ContactsActivity.class.getName();
     static final int PICK_CONTACT_REQUEST = 1;  //request code
     private int viewNumber; // helper variable to have connection between buttons and textviews
 
@@ -39,15 +40,13 @@ public class ContactsActivity extends AppCompatActivity {
     private TextView[] textViewList;
     private HashMap<TextView, Contact> textViewContactHashMap;
 
-    private ContactDatabase db;
+    private ContactDatabase database;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-
-        //fillTextViews(); //with contacts already saved in database
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -65,8 +64,11 @@ public class ContactsActivity extends AppCompatActivity {
         textViewContactHashMap = new HashMap<>();
         textViewList = new TextView[]{textView1, textView2, textView3, textView4, textView5};
 
-        db = new ContactDatabase(getApplicationContext());
-        db.open();
+        database = new ContactDatabase(getApplicationContext());
+        database.open();
+
+        // if there are contacts in the database, put them on textviews
+        fillTextViews();
     }
 
 
@@ -87,7 +89,7 @@ public class ContactsActivity extends AppCompatActivity {
         pickContact(5);
     }
     public void onSaveButtonClick(View view) {
-        addContacts();
+        database.close(); //close database
         finish();
     }
 
@@ -118,17 +120,14 @@ public class ContactsActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 // Retrieve the phone number from the NUMBER column
-                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-                String number = cursor.getString(column);
+                int numberColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(numberColumn);
                 // Retrieve the name from the DISPLAY_NAME column
-                int nameCol = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-                String name = cursor.getString(nameCol);
+                int nameColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                String name = cursor.getString(nameColumn);
 
-                // save the contact and its corresponding textview to map,
-                // and set textview to contact.name
                 Contact contact = new Contact(number, name);
-                textViewContactHashMap.put(textViewList[this.viewNumber-1], contact);
-                textViewList[this.viewNumber-1].setText(name);
+                addNewContact(contact, viewNumber);
             }
         }
     }
@@ -136,22 +135,30 @@ public class ContactsActivity extends AppCompatActivity {
 
     // Populates the textviews when activity comes up, with the contacts already in database
     void fillTextViews() {
-        ArrayList<Contact> contactList = db.getContacts();
+        ArrayList<Contact> contactList = database.getContacts();
         // put contacts in the database on the textviews
-        for (int i = 0; i < textViewList.length; i++)
+        for (int i = 0; i < contactList.size(); i++)
             this.textViewList[i].setText(contactList.get(i).getName());
     }
 
 
     // Adds contact to database
-    void addContacts(Contact contact, int viewNumber) {
-        String oldText = textViewList[viewNumber-1].getText().toString();
+    void addNewContact(Contact contact, int viewNumber) {
+        Contact oldContact = textViewContactHashMap.get(textViewList[viewNumber - 1]);
+        if (oldContact != null) {
+            database.deleteContact(oldContact);
+            Log.d(TAG, oldContact.getName() + " Deleted");
+        }
 
-        if (!oldText.equals(R.string.no_contact_selected_textview))
-            db.deleteContact(contact);
+        textViewContactHashMap.put(textViewList[this.viewNumber-1], contact);
+        database.insertContact(contact);
 
-        db.insertContact(contact);
-        db.close(); //close db
+        ArrayList<Contact> contacts = database.getContacts();   //delete this
+        for(Contact contac: contacts) {
+            Log.d(TAG, contac.getName());
+        }
+
+        textViewList[this.viewNumber-1].setText(contact.getName());
     }
 
 }
