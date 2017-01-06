@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
- * Created by David Nguyen on 4/21/2016.
+ * Created by Arash Nase on 4/21/2016.
  *
  */
 
@@ -19,20 +19,20 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
     }
 
-    public void editContacts (View view) {
-        // Go to add contacts activity
+    // Go to add contacts activity
+    public void onClickeditContacts(View view) {
         Intent intent = new Intent(this, ContactsActivity.class);
         startActivity(intent);
     }
 
-    public void changePassword(View view) {
-        // Go to pin activity
+    // Go to pin activity
+    public void onClickChangePassword(View view) {
         Intent intent = new Intent(this, PasswordCreateActivity.class);
         startActivity(intent);
     }
 
-    public void goHome(View view) {
-        //Return to home page
+    // Return to home page
+    public void onClickGoHome(View view) {
         finish();
     }
 }

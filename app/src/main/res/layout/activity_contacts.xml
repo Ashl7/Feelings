@@ -131,6 +131,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:onClick="onSaveButtonClick"
-        style="@style/my_buttons"/>
+        style="@style/my_wide_buttons"/>
 
 </RelativeLayout>

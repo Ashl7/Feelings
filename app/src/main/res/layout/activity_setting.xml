@@ -7,45 +7,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Setting"
+        android:text="@string/setting_textview"
         android:id="@+id/textSetting"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="60dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Contacts"
+        android:text="@string/edit_contact_button"
         android:id="@+id/contacts"
-        android:onClick="editContacts"
-        android:layout_marginBottom="10dp"
+        android:onClick="onClickeditContacts"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        style="@style/my_wide_buttons"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Pin"
+        android:text="@string/edit_pin_button"
         android:id="@+id/edit_pin"
-        android:onClick="changePassword"
-        android:layout_marginBottom="10dp"
+        android:onClick="onClickChangePassword"
         android:layout_gravity="center_horizontal"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp"
+        style="@style/my_wide_buttons"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Home"
+        android:text="@string/back_home_button"
         android:id="@+id/back_main"
-        android:onClick="goHome"
-        android:layout_marginBottom="10dp"
+        android:onClick="onClickGoHome"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp"
+        style="@style/my_wide_buttons"/>
 </LinearLayout>

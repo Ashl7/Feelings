@@ -22,4 +22,11 @@
     <string name="password">com.autism.mindpower.feeling.password</string>
     <string name="save_and_proceed_button">Save and Proceed</string>
     <string name="no_contact_selected_textview">No Contact is Selected</string>
+    <string name="enter_password_textview">Enter Password</string>
+    <string name="create_password_textview">Create Password</string>
+    <string name="setting_textview">Setting</string>
+    <string name="back_home_button">Back to Home</string>
+    <string name="edit_pin_button">Edit Pin</string>
+    <string name="edit_contact_button">Edit Contacts</string>
+    <string name="save_password_button">Save Password</string>
 </resources>
