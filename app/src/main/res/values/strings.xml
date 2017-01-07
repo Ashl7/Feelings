@@ -29,4 +29,7 @@
     <string name="edit_pin_button">Edit Pin</string>
     <string name="edit_contact_button">Edit Contacts</string>
     <string name="save_password_button">Save Password</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="send_to">Send to</string>
 </resources>

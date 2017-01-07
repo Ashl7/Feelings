@@ -94,14 +94,14 @@ public class SendTextFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_send_text, container, false);
 
         // Populate the emoji picture and the emotion from the params
-        emojiName = (TextView)view.findViewById(R.id.tvWord);
+        emojiName = (TextView)view.findViewById(R.id.emojy_name_textview);
         emojiName.setText(mParamName);
-        emojiPicture = (ImageView)view.findViewById(R.id.ivEmotion);
+        emojiPicture = (ImageView)view.findViewById(R.id.emoji_image_view);
         emojiPicture.setImageResource(mParamEmoji);
 
         // Assign text fields to variables so we can get them later
         toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);
-        Button sendButton = (Button)view.findViewById(R.id.send_sms_btn);
+        Button sendButton = (Button)view.findViewById(R.id.send_sms_button);
 
         cl = getContactsFromDatabase();
         ArrayContactAdapter cAdapter =
@@ -116,15 +116,12 @@ public class SendTextFragment extends DialogFragment {
             }
         });
 
-        // Button needs to have an OnClickListener set here since this is a fragment
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String toPhoneNumber = toPhoneNumberET.getText().toString();
-                sendSms(toPhoneNumber);
-            }
-        });
         return view;
+    }
+
+    public void onSendClick(View view) {
+        String toPhoneNumber = toPhoneNumberET.getText().toString();
+        sendSms(toPhoneNumber);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

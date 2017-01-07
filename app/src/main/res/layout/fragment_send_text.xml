@@ -5,82 +5,65 @@
     tools:context="com.autism.mindpower.feeling.SendTextFragment">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:minHeight="512dp"
-        android:minWidth="256dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emojy_name_textview"
+        android:textSize="48sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tvWord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_emotion_placeholder"
-                android:textSize="48sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ivEmotion"
-                android:src="@android:drawable/stat_sys_warning"
-                android:maxHeight="192dp"
-                android:maxWidth="192dp"
-                android:scaleType="centerInside"
-                android:cropToPadding="false"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/tvWord"
-                android:layout_centerHorizontal="true" />
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tvTellText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_tell_person"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/to_phone_number_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:visibility="gone" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emoji_image_view"
+        android:src="@android:drawable/stat_sys_warning"
+        android:maxHeight="192dp"
+        android:maxWidth="192dp"
+        android:scaleType="centerInside"
+        android:cropToPadding="false"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/emojy_name_textview"
+        android:layout_centerHorizontal="true" />
 
 
-        <Button android:id="@+id/send_sms_btn"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_send"
-            android:clickable="false"
-            android:visibility="gone" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTellText"
+        android:text="@string/text_tell_person"
+        android:textSize="24sp"
+        android:layout_below="@+id/emoji_image_view"
+        android:layout_marginTop="15dp"/>
 
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lvContacts"
-            android:minHeight="@dimen/notification_large_icon_height"
-            android:minWidth="@dimen/notification_large_icon_width" />
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvContacts"
+        android:layout_below="@id/tvTellText"
+        android:layout_marginTop="15dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/send_sms_button"
-            android:text="@string/button_send"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_sms_button"
+        android:text="@string/button_send"
+        android:onClick="onSendClick"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/send_sms_button"
+        android:textColor="#6ca5f9" />
 
-    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel_sms_button"
+        android:text="@string/cancel"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentBottom="true"
+        android:textColor="#6ca5f9"
+        android:layout_toLeftOf="@id/send_sms_button"/>
 
 
 </RelativeLayout>
