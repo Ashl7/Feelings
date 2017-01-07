@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Arash Nase on 4/17/2016.
- * It maintains the database connection and supports adding new contact or removing from database.
+ * Modified on 1/7/2017
+ * It maintains the database connection and supports adding/removing/getting contacts from database.
  */
 public class ContactDatabase {
 
@@ -26,6 +27,7 @@ public class ContactDatabase {
             ContactDatabaseHelper.COLUMN_ID,
             ContactDatabaseHelper.COLUMN_CONTACT_NUMBER,
             ContactDatabaseHelper.COLUMN_CONTACT_NAME,
+            ContactDatabaseHelper.COLUMN_CONTACT_CAN_SEND
     };
 
 
@@ -57,15 +59,16 @@ public class ContactDatabase {
         ContentValues values = new ContentValues();
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER, contact.getNumber());
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NAME, contact.getName());
+        values.put(ContactDatabaseHelper.COLUMN_CONTACT_CAN_SEND, "1");
         database.insert(ContactDatabaseHelper.TABLE_CONTACTS, null, values);
     }
 
 
     // Delete a contact from the database
     public void deleteContact(Contact contact) {
-        database.execSQL("DELETE FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
-                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "='" + contact.getNumber() + "';");
-        //database.delete(ContactDatabaseHelper.TABLE_CONTACTS, ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + "=" + contact.getNumber(), null);
+        database.delete(ContactDatabaseHelper.TABLE_CONTACTS,
+                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + " = ?",
+                new String[]{contact.getNumber()}) ;
     }
 
 
@@ -77,8 +80,7 @@ public class ContactDatabase {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Contact contact = cursorToContact(cursor);
-            contacts.add(contact);
+            contacts.add(cursorToContact(cursor));
             cursor.moveToNext();
         }
 
@@ -91,12 +93,7 @@ public class ContactDatabase {
     private Contact cursorToContact(Cursor cursor) {
         if(cursor.isBeforeFirst() || cursor.isAfterLast())
             return null;
-
-        Contact contact = new Contact(null, null);
-
-        contact.setNumber(cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER)));
-        contact.setName(cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NAME)));
-
-        return contact;
+        return new Contact(cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER)),
+                cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NAME)));
     }
 }

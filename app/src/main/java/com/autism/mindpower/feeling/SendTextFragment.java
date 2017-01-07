@@ -100,7 +100,7 @@ public class SendTextFragment extends DialogFragment {
         emojiPicture.setImageResource(mParamEmoji);
 
         // Assign text fields to variables so we can get them later
-        toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);
+        //toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);/////////////////////////////////////////////
         Button sendButton = (Button)view.findViewById(R.id.send_sms_button);
 
         cl = getContactsFromDatabase();

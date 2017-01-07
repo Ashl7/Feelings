@@ -20,12 +20,13 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
     public static final String COLUMN_ID = "_id";   //primary key of the table
     public static final String COLUMN_CONTACT_NUMBER = "number";
     public static final String COLUMN_CONTACT_NAME = "name";
+    public static final String COLUMN_CONTACT_CAN_SEND = "can_send";    // can have values 0 or 1
 
 
     //Create the database
     public ContactDatabaseHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
-        Log.v(TAG, "DATABASE INSTANCE CREATED");
+        Log.d(TAG, "database instance created.");
     }
 
 
@@ -35,10 +36,11 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper  {
         String createQuery = "CREATE TABLE " + TABLE_CONTACTS + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_CONTACT_NUMBER + " TEXT, " +
-                COLUMN_CONTACT_NAME + " TEXT " +
+                COLUMN_CONTACT_NAME + " TEXT, " +
+                COLUMN_CONTACT_CAN_SEND + " TEXT" +
                 ");";
         db.execSQL(createQuery);
-        Log.v(TAG, "TABLE CREATED");
+        Log.d(TAG, TABLE_CONTACTS + " table created.");
     }
 
 
