@@ -1,10 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.autism.mindpower.feeling.SendTextFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:orientation="vertical"
@@ -59,12 +58,6 @@
             android:text="Phone Number"
             android:visibility="gone" />
 
-        <EditText
-            android:id="@+id/to_phone_number_et"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:visibility="gone" />
 
         <Button android:id="@+id/send_sms_btn"
             android:layout_width="fill_parent"
@@ -80,7 +73,14 @@
             android:minHeight="@dimen/notification_large_icon_height"
             android:minWidth="@dimen/notification_large_icon_width" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_sms_button"
+            android:text="@string/button_send"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
     </LinearLayout>
 
 
-</FrameLayout>
+</RelativeLayout>

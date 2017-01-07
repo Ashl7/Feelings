@@ -29,6 +29,8 @@ import java.util.ArrayList;
  * to handle interaction events.
  * Use the {@link SendTextFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
+ * Created by Arash Nase
  */
 public class SendTextFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match

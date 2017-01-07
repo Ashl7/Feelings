@@ -8,7 +8,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_edit_contacts">Edit contacts</string>
     <string name="action_show_text_dialog">Show SMS dialog</string>
-    <string name="text_tell_person">Tell:</string>
+    <string name="text_tell_person">Sending text to:</string>
     <string name="text_emotion_placeholder">Placeholder</string>
     <string name="button_send">Send</string>
     <string name="text_im_feeling">I\'m feeling %1$s</string>
@@ -16,8 +16,8 @@
     <string name="set_password">Set Password</string>
     <string name="text_how_feeling">How are you feeling?</string>
     <string name="text_told_person">Told %1$s</string>
-    <string name="contact_activity_guide">Select up to 5 contacts to send message to</string>
 
+    <string name="contact_activity_guide">Select up to 5 contacts to send message to</string>
     <string name="select_contact_button">Select Contact</string>
     <string name="password">com.autism.mindpower.feeling.password</string>
     <string name="save_and_proceed_button">Save and Proceed</string>
