@@ -1,17 +1,14 @@
 package com.autism.mindpower.feeling;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -166,7 +163,7 @@ public class SendTextFragment extends DialogFragment {
     ArrayList<Contact> getContactsFromDatabase() {
         ContactDatabase db = new ContactDatabase(getContext());
         db.open();
-        ArrayList<Contact> cl = db.getContacts();
+        ArrayList<Contact> cl = db.getAllContacts();
         db.close();
         return cl;
     }

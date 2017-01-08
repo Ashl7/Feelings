@@ -55,7 +55,7 @@ public class ContactChecklistFragment extends Fragment {
         listView = (ListView) getView().findViewById(R.id.contacts_listview);
         listView.setOnItemClickListener(itemClickListener);
 
-        ArrayList<Contact> contactList = database.getContacts();
+        ArrayList<Contact> contactList = database.getAllContacts();
 
         ArrayAdapter<Contact> listAdapter = new ArrayAdapter<Contact>(
                 getActivity().getApplicationContext(),

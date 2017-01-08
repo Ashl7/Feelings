@@ -56,6 +56,10 @@ public class ContactDatabase {
 
     // Add a new contact to database
     public void insertContact(Contact contact){
+        if(hasContact(contact)) {
+            Log.d(TAG, "Contact already exists.");
+            return;
+        }
         ContentValues values = new ContentValues();
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER, contact.getNumber());
         values.put(ContactDatabaseHelper.COLUMN_CONTACT_NAME, contact.getName());
@@ -65,27 +69,40 @@ public class ContactDatabase {
 
 
     // Delete a contact from the database
-    public void deleteContact(Contact contact) {
+    public void deleteContact(String contactName) {
         database.delete(ContactDatabaseHelper.TABLE_CONTACTS,
-                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + " = ?",
-                new String[]{contact.getNumber()}) ;
+                ContactDatabaseHelper.COLUMN_CONTACT_NAME + " = ?",
+                new String[]{contactName}) ;
+        Log.d(TAG, contactName + " deleted from database.");
     }
 
 
     // Get ALL contacts in the database in an ArrayList
-    public ArrayList<Contact> getContacts(){
+    public ArrayList<Contact> getAllContacts(){
         ArrayList<Contact> contacts = new ArrayList<>();
         Cursor cursor = database.query(ContactDatabaseHelper.TABLE_CONTACTS,
                 allColumns, null, null, null, null, null);
-
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             contacts.add(cursorToContact(cursor));
             cursor.moveToNext();
         }
-
         cursor.close();     // make sure to close the cursor
         return contacts;
+    }
+
+
+    // Checks if a contact is in database or not
+    public boolean hasContact(Contact contact) {
+        String Query = "SELECT * FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
+                ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + " = ?";
+        Cursor cursor = database.rawQuery(Query, new String[]{contact.getNumber()});
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
     }
 
 
@@ -96,4 +113,5 @@ public class ContactDatabase {
         return new Contact(cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NUMBER)),
                 cursor.getString(cursor.getColumnIndex(ContactDatabaseHelper.COLUMN_CONTACT_NAME)));
     }
+
 }
