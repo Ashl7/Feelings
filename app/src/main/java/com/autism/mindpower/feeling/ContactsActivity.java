@@ -18,7 +18,8 @@ import java.util.ArrayList;
  * of people the app should send text to
  *
  * TODO: design it in a way that database only gets updated onces Save button is clicked, not everytime Select Contact is clicked.
- * (because right now, database will be updated whether or not user clicks back button, or clicks on Save button!
+ * (because right now, database will be updated whether or not user clicks back button, or clicks on Save button!)
+ * TODO: Edge case: in AddNewContact, what if two contacts have the same name, different numbers?
  *
  */
 public class ContactsActivity extends AppCompatActivity {

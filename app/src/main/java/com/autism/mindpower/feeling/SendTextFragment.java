@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +19,10 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SendTextFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SendTextFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- * Created by Arash Nase
+ * Created by Jeff To 4/17/2016
+ * Modified by Arash Nase 1/8/2017
+ * Child fragment of MainActivity, in which the user chooses the emoji to send
+ * TODO: can you move sending sms to the background? Is it better?
  */
 public class SendTextFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -45,10 +40,10 @@ public class SendTextFragment extends DialogFragment {
 
     private TextView emojiName;
     private ImageView emojiPicture;
-    private EditText toPhoneNumberET;
+    private Button sendButton;
     private ListView contactsListView;
 
-    private ArrayList<Contact> cl;
+    private ArrayList<Contact> contactList;
 
     public SendTextFragment() {
         // Required empty public constructor
@@ -90,36 +85,29 @@ public class SendTextFragment extends DialogFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_send_text, container, false);
 
-        // Populate the emoji picture and the emotion from the params
+        sendButton = (Button)view.findViewById(R.id.send_button);
         emojiName = (TextView)view.findViewById(R.id.emojy_name_textview);
-        emojiName.setText(mParamName);
         emojiPicture = (ImageView)view.findViewById(R.id.emoji_image_view);
+        contactsListView = (ListView)view.findViewById(R.id.contacts_listview);
+
+        emojiName.setText(mParamName);
         emojiPicture.setImageResource(mParamEmoji);
-
-        // Assign text fields to variables so we can get them later
-        //toPhoneNumberET = (EditText)view.findViewById(R.id.to_phone_number_et);/////////////////////////////////////////////
-        Button sendButton = (Button)view.findViewById(R.id.send_sms_button);
-
-        cl = getContactsFromDatabase();
+        contactList = getContactsFromDatabase();
         ArrayContactAdapter cAdapter =
-                new ArrayContactAdapter(getContext(), android.R.layout.simple_list_item_1, cl);
-        contactsListView = (ListView)view.findViewById(R.id.lvContacts);
+                new ArrayContactAdapter(getContext(), android.R.layout.simple_list_item_1, contactList);
         contactsListView.setAdapter(cAdapter);
-        contactsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contact c = (Contact)parent.getItemAtPosition(position);
-                sendSms(c.getNumber());
+            public void onClick(View v) {
+                for(Contact contact: contactList)
+                    sendSms(contact.getNumber());
             }
         });
-
+        
         return view;
     }
 
-    public void onSendClick(View view) {
-        String toPhoneNumber = toPhoneNumberET.getText().toString();
-        sendSms(toPhoneNumber);
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

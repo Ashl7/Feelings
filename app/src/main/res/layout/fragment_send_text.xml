@@ -4,12 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.autism.mindpower.feeling.SendTextFragment">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emojy_name_textview"
-        android:textSize="48sp"
+        android:textSize="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -26,44 +25,34 @@
         android:layout_below="@+id/emojy_name_textview"
         android:layout_centerHorizontal="true" />
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTellText"
         android:text="@string/text_tell_person"
-        android:textSize="24sp"
+        android:textSize="20dp"
         android:layout_below="@+id/emoji_image_view"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"/>
 
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvContacts"
+        android:id="@+id/contacts_listview"
         android:layout_below="@id/tvTellText"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/send_sms_button"
+        android:id="@+id/send_button"
         android:text="@string/button_send"
         android:onClick="onSendClick"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/send_sms_button"
-        android:textColor="#6ca5f9" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel_sms_button"
-        android:text="@string/cancel"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_alignParentBottom="true"
         android:textColor="#6ca5f9"
-        android:layout_toLeftOf="@id/send_sms_button"/>
-
+        android:textSize="30dp" />
 
 </RelativeLayout>
