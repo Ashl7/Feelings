@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_setting) {
             checkPassowrd();
         }
+        if (id == R.id.checklist) {
+            Intent intent = new Intent(this, ContactCheckListActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

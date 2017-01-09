@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 
@@ -57,10 +56,15 @@ public class ContactChecklistFragment extends Fragment {
 
         ArrayList<Contact> contactList = database.getAllContacts();
 
-        ArrayAdapter<Contact> listAdapter = new ArrayAdapter<Contact>(
-                getActivity().getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                contactList);
+        ArrayContactCheckboxAdapter listAdapter =
+                new ArrayContactCheckboxAdapter(getActivity(), R.layout.item_checkbox, contactList);
         listView.setAdapter(listAdapter);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        database.close();
     }
 }

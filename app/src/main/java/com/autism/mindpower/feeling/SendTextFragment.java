@@ -104,7 +104,7 @@ public class SendTextFragment extends DialogFragment {
                     sendSms(contact.getNumber());
             }
         });
-        
+
         return view;
     }
 
