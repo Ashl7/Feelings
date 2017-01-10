@@ -15,6 +15,8 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Created by Arash Nase
+ * Fragment that the child uses to select which contacts send sms too
+ * Sibling of EmojiGridFragment, contained in MainActivityPager
  */
 public class ContactChecklistFragment extends Fragment {
 
@@ -40,7 +42,6 @@ public class ContactChecklistFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         // Setting up listener for items that are clicked on the list
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -63,7 +64,7 @@ public class ContactChecklistFragment extends Fragment {
 
 
     @Override
-    public void onStop() {
+    public void onDestroy() {
         super.onStop();
         database.close();
     }

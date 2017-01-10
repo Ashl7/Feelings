@@ -8,34 +8,30 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/app_name_long"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name=".ContactsActivity"
-            android:label="@string/contactActivity" />
-        <activity
-            android:name=".PasswordCreateActivity"
-            android:label="@string/set_password"
-            android:noHistory="true" />
-        <activity
-            android:name=".SettingActivity"
-            android:label="@string/action_settings" />
-        <activity
-            android:name=".PasswordCheckActivity"
-            android:label="Wait..."
-            android:noHistory="true" />
-        <activity android:name=".ContactCheckListActivity" />
-        <activity android:name=".FragmentPager" />
-        <activity android:name=".PagerActivity">
+
+        <activity android:name=".MainActivityPager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ContactsActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".PasswordCreateActivity"
+            android:label="@string/app_name"
+            android:noHistory="true" />
+        <activity
+            android:name=".PasswordCheckActivity"
+            android:label="@string/app_name"
+            android:noHistory="true" />
     </application>
 
 </manifest>

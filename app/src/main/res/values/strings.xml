@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Feeling?</string>
+    <string name="app_name">Feelings</string>
+    <string name="app_name_long">How Are You Feeling?</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="contactActivity">Contacts</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_edit_contacts">Edit contacts</string>
     <string name="action_show_text_dialog">Show SMS dialog</string>
