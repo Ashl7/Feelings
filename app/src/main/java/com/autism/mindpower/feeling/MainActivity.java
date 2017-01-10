@@ -28,14 +28,13 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<Emoji> emojiList;
     private GridView emojiGridView;
 
-    private SharedPreferences sharedPref;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPref = getSharedPreferences(getString(R.string.password), Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
+                Context.MODE_PRIVATE);
         boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
         // if pin is not set, go to the PasswordCreateActivity to set it up for the first up
         if (!passwordSet) {
