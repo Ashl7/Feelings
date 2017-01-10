@@ -34,6 +34,7 @@
             android:label="Wait..."
             android:noHistory="true"></activity>
         <activity android:name=".ContactCheckListActivity"></activity>
+        <activity android:name=".FragmentPager"></activity>
     </application>
 
 </manifest>

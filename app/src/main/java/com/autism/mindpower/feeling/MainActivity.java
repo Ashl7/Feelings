@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity
             checkPassowrd();
         }
         if (id == R.id.checklist) {
-            Intent intent = new Intent(this, ContactCheckListActivity.class);
+            Intent intent = new Intent(this, FragmentPager.class);
             startActivity(intent);
         }
 
