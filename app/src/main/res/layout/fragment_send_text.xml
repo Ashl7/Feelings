@@ -44,15 +44,16 @@
         android:layout_marginLeft="20dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/send_button"
         android:text="@string/button_send"
         android:onClick="onSendClick"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_alignParentRight="true"
+        style="@style/my_wide_buttons"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:textColor="#6ca5f9"
-        android:textSize="30dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>

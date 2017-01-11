@@ -68,6 +68,19 @@ public class ContactDatabase {
     }
 
 
+    // Sets COLUMN_CONTACT_CAN_SEND tp 0 or 1 if the contact's check is off/on in app
+    public void updateCanSendColumn(String name, int canSend) {
+        ContentValues values = new ContentValues();
+        if(canSend == 1)
+            values.put(ContactDatabaseHelper.COLUMN_CONTACT_CAN_SEND, "1");
+        else
+            values.put(ContactDatabaseHelper.COLUMN_CONTACT_CAN_SEND, "0");
+        database.update(dbHelper.TABLE_CONTACTS, values,
+                ContactDatabaseHelper.COLUMN_CONTACT_NAME + " = ?", new String[]{name});
+        Log.d(TAG, name + " can_send is updated to " + canSend);
+    }
+
+
     // Delete a contact from the database
     public void deleteContact(String contactName) {
         database.delete(ContactDatabaseHelper.TABLE_CONTACTS,
@@ -78,7 +91,7 @@ public class ContactDatabase {
 
 
     // Get ALL contacts in the database in an ArrayList
-    public ArrayList<Contact> getAllContacts(){
+    public ArrayList<Contact> getAllContacts() {
         ArrayList<Contact> contacts = new ArrayList<>();
         Cursor cursor = database.query(ContactDatabaseHelper.TABLE_CONTACTS,
                 allColumns, null, null, null, null, null);
@@ -92,11 +105,31 @@ public class ContactDatabase {
     }
 
 
+    // Get contacts with COLUMN_CONTACT_CAN_SEND == 1
+    public ArrayList<Contact> getCanSendContacts() {
+        ArrayList<Contact> contacts = new ArrayList<>();
+        Cursor cursor = database.query(
+                ContactDatabaseHelper.TABLE_CONTACTS,
+                allColumns,
+                ContactDatabaseHelper.COLUMN_CONTACT_CAN_SEND + " = ?",
+                new String[]{"1"},
+                null, null, null);
+        cursor.moveToFirst();
+        cursor.getCount();
+        while (!cursor.isAfterLast()) {
+            contacts.add(cursorToContact(cursor));
+            cursor.moveToNext();
+        }
+        cursor.close();     // make sure to close the cursor
+        return contacts;
+    }
+
+
     // Checks if a contact is in database or not
     public boolean hasContact(Contact contact) {
-        String Query = "SELECT * FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
+        String query = "SELECT * FROM " + ContactDatabaseHelper.TABLE_CONTACTS + " WHERE " +
                 ContactDatabaseHelper.COLUMN_CONTACT_NUMBER + " = ?";
-        Cursor cursor = database.rawQuery(Query, new String[]{contact.getNumber()});
+        Cursor cursor = database.rawQuery(query, new String[]{contact.getNumber()});
         if(cursor.getCount() <= 0){
             cursor.close();
             return false;

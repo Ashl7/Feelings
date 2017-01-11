@@ -23,6 +23,7 @@ import java.util.ArrayList;
  * Modified by Arash Nase 1/8/2017
  * Child fragment of EmojiGridFragment, in which the user chooses the emoji to send
  * TODO: can you move sending sms to the background? Is it better?
+ * TODO: when there is no contact, send button does not work at all!
  */
 public class SendTextFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -151,7 +152,7 @@ public class SendTextFragment extends DialogFragment {
     ArrayList<Contact> getContactsFromDatabase() {
         ContactDatabase db = new ContactDatabase(getContext());
         db.open();
-        ArrayList<Contact> cl = db.getAllContacts();
+        ArrayList<Contact> cl = db.getCanSendContacts();
         db.close();
         return cl;
     }
