@@ -1,13 +1,22 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme.
+         Note: if you are using API above 21 (material), use every name with android:, how
+         ever if it is for <21, then use it without android: -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+        <!-- Customize your main theme colors here. -->
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">#3A4F38</item>
+        <!--   your app branding color for the app bar -->
+        <item name="colorPrimary">#7FBA72</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">#7FBA72</item>
     </style>
+
 
     <style name="my_wide_buttons">
         <item name="android:textColor">#ffffff</item>
-        <item name="android:background">#6ca5f9</item>
+        <item name="android:background">#7FBA72</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
