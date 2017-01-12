@@ -19,6 +19,11 @@
         <item name="android:background">#7FBA72</item>
     </style>
 
+    <style name="my_activity_title">
+        <item name ="android:textSize">28sp</item>"
+        <item name ="android:textStyle">bold</item>"
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

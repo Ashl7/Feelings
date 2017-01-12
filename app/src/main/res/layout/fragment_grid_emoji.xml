@@ -3,23 +3,10 @@
     android:layout_height="match_parent"
     tools:context=".EmojiGridFragment">
 
-    <TextView android:text="@string/text_how_feeling" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="@dimen/abc_text_size_headline_material"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"/>
-
     <GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gvEmoji"
-        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:columnWidth="90dp"
