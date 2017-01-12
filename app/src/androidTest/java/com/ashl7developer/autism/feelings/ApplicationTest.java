@@ -1,4 +1,4 @@
-package com.autism.mindpower.feeling;
+package com.ashl7developer.autism.feelings;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

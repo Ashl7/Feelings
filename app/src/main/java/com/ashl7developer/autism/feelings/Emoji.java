@@ -1,4 +1,4 @@
-package com.autism.mindpower.feeling;
+package com.ashl7developer.autism.feelings;
 
 import java.util.ArrayList;
 

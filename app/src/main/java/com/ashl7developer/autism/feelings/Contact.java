@@ -1,4 +1,4 @@
-package com.autism.mindpower.feeling;
+package com.ashl7developer.autism.feelings;
 
 /**
  * Created by Arash Nase on 4/17/2016.

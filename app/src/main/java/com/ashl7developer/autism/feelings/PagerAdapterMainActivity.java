@@ -1,4 +1,4 @@
-package com.autism.mindpower.feeling;
+package com.ashl7developer.autism.feelings;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,13 +9,13 @@ import android.support.v4.app.FragmentPagerAdapter;
  * This adapter will keep track of which tab is currently selected
  * and loads or returns the right fragment.
  */
-public class PagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapterMainActivity extends FragmentPagerAdapter {
 
     private static final int NUM_FRAGMENTS = 2;      // Number of tabs
     private static final String[] TAB_NAMES = {"FEELINGS", "CONTACTS"};  // Tab titles
 
 
-    public PagerAdapter(FragmentManager fm) {
+    public PagerAdapterMainActivity(FragmentManager fm) {
         super(fm);
     }
 

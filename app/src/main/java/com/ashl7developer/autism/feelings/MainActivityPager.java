@@ -1,4 +1,4 @@
-package com.autism.mindpower.feeling;
+package com.ashl7developer.autism.feelings;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +32,7 @@ public class MainActivityPager extends AppCompatActivity implements
         }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new PagerAdapterMainActivity(getSupportFragmentManager()));
 
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
