@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ashl7developer.autism.feelings.WelcomeSlide2Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_bullet"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:text="0"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/dot_inactive"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_bullet"
+        android:layout_toRightOf="@id/left_bullet"
+        android:text="0"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/dot_active"/>
+
+</RelativeLayout>
