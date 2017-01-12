@@ -35,4 +35,9 @@ public class SettingActivity extends AppCompatActivity {
     public void onClickGoHome(View view) {
         finish();
     }
+
+    public void onClickWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        startActivity(intent);
+    }
 }

@@ -48,4 +48,16 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         style="@style/my_wide_buttons"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To welcome"
+        android:id="@+id/welcome_screen"
+        android:onClick="onClickWelcome"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        style="@style/my_wide_buttons"/>
 </LinearLayout>
