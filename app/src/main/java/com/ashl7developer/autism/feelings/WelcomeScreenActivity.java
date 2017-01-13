@@ -28,6 +28,13 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
+                Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("firstTime", false);
+        editor.commit();
+
         // make notification bar transparent
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();

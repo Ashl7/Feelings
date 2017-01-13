@@ -25,10 +25,13 @@ public class MainActivityPager extends AppCompatActivity implements
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
                 Context.MODE_PRIVATE);
         boolean firstTimeUse = sharedPref.getBoolean("firstTime", true);
+
         // if first time using the app, launch welcome screen
         if (firstTimeUse) {
             Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
             startActivity(intent);
         }
 
