@@ -24,9 +24,9 @@ public class MainActivityPager extends AppCompatActivity implements
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
                 Context.MODE_PRIVATE);
-        boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
-        // if pin is not set, go to the PasswordCreateActivity to set it up for the first up
-        if (!passwordSet) {
+        boolean firstTimeUse = sharedPref.getBoolean("firstTime", true);
+        // if first time using the app, launch welcome screen
+        if (firstTimeUse) {
             Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
             startActivity(intent);
         }

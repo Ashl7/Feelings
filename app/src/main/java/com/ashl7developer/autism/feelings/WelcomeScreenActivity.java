@@ -15,6 +15,7 @@ import android.view.WindowManager;
 /*
 * Created by Arash Nase 1/11/2017
 * Welcome screen that comes up the first time app is launched
+* TODO: fix orientations
 */
 public class WelcomeScreenActivity extends AppCompatActivity {
 

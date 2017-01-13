@@ -45,14 +45,12 @@
 
     <string name="slide2_title">How To Use</string>
     <string name="slide2_desc">
-        Firstly choose a password for the app.
-        This is to prevent the child from accessing the Settings and manipulating the app\'s data.\n
-        Secondly, select the contacts you wish the texts to be sent to.
+        \tTo get started, firstly choose a password for the app. This is to prevent the child from accessing the Settings and manipulating the app\'s data.\n
+        \tSecondly, select the contacts you wish the texts to be sent to.
         You may select up to 5 different contacts.\n
-        Then Feelings will be ready to be used by the child.
-        You may change password or contacts in the Setting if you need to.\n
+        \tThen Feelings will be ready to be used by the child. You may change password or contacts in the Setting if you need to.\n
     </string>
 
-    <string name="start_up">Start the App</string>
+    <string name="start_up">Get Started</string>
 
 </resources>

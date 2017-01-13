@@ -1,6 +1,8 @@
 package com.ashl7developer.autism.feelings;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -98,6 +100,17 @@ public class ContactSelectActivity extends AppCompatActivity {
     }
     public void onSaveButtonClick(View view) {
         database.close(); //close database
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
+                Context.MODE_PRIVATE);
+        boolean firstTimeUse = sharedPref.getBoolean("firstTime", true);
+        // if first time using the app, launch welcome screen
+        if (firstTimeUse) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean("firstTime", false);
+            editor.commit();
+            Intent intent = new Intent(getApplicationContext(), MainActivityPager.class);
+            startActivity(intent);
+        }
         finish();
     }
 
