@@ -171,7 +171,7 @@ public class ContactSelectActivity extends AppCompatActivity {
         }
 
         database.insertContact(contact);
-        textViewList[this.viewNumber-1].setText(contact.getName());
+        //textViewList[this.viewNumber-1].setText(contact.getName()); source of a bug
     }
 
 }
