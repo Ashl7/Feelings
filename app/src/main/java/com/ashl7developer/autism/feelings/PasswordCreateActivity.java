@@ -29,7 +29,8 @@ public class PasswordCreateActivity extends AppCompatActivity {
     }
 
     public void onSavePasswordClick(View view) {
-        SharedPreferences sharedpreference = getSharedPreferences(getString(R.string.password), Context.MODE_PRIVATE);
+        SharedPreferences sharedpreference = getSharedPreferences(
+                getString(R.string.password), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreference.edit();
         editor.putString("password", password.getText().toString());
         editor.putBoolean("passwordSet", true);

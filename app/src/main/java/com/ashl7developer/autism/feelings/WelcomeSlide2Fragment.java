@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import android.widget.TextView;
  * Second slide of welcome screen
  */
 public class WelcomeSlide2Fragment extends Fragment {
-
+    private static final String TAG = WelcomeSlide2Fragment.class.getName();
     private TextView leftDot;
     private TextView rightDot;
     private Button startButton;
@@ -34,6 +35,8 @@ public class WelcomeSlide2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.d(TAG, "in slide2Fragment");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_welcome_slide2, container, false);
         leftDot = (TextView) v.findViewById(R.id.left_bullet);
@@ -48,8 +51,9 @@ public class WelcomeSlide2Fragment extends Fragment {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("firstTime", false);
                 editor.commit();
-                Intent intent = new Intent(getActivity(), MainActivityPager.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Log.d(TAG, "saved firsttime false, killing activity now");
+                Intent intent = new Intent(getActivity(), PasswordCreateActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });

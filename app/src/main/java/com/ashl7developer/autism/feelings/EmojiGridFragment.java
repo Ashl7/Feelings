@@ -57,7 +57,7 @@ public class EmojiGridFragment extends Fragment
             });
         }
 
-        SmsHelper.checkAndRequestSmsPermission(getActivity(), REQUEST_SMS);
+        //SmsHelper.checkAndRequestSmsPermission(getActivity(), REQUEST_SMS);
     }
 
     // Opens up DialogFragment to send sms

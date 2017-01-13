@@ -12,7 +12,7 @@
     <string name="text_emotion_placeholder">Placeholder</string>
     <string name="button_send">Send</string>
     <string name="text_im_feeling">I\'m feeling %1$s</string>
-    <string name="pin_enter">Enter Passowrd</string>
+    <string name="pin_enter">Enter Password</string>
     <string name="set_password">Set Password</string>
     <string name="text_how_feeling">How are you feeling?</string>
     <string name="text_told_person">Told %1$s</string>
@@ -26,7 +26,7 @@
     <string name="create_password_textview">Create Password</string>
     <string name="setting_textview">Setting</string>
     <string name="back_home_button">Back to Home</string>
-    <string name="edit_pin_button">Edit Pin</string>
+    <string name="edit_pin_button">Edit Password</string>
     <string name="edit_contact_button">Edit Contacts</string>
     <string name="save_password_button">Save Password</string>
 
@@ -45,10 +45,11 @@
 
     <string name="slide2_title">How To Use</string>
     <string name="slide2_desc">
-        \tTo get started, firstly choose a password for the app. This is to prevent the child from accessing the Settings and manipulating the app\'s data.\n
+        \tTo set up the app for your child, firstly choose a password for the app.
+         This is to prevent the child from accessing the Settings and manipulating the app\'s data.\n
         \tSecondly, select the contacts you wish the texts to be sent to.
         You may select up to 5 different contacts.\n
-        \tThen Feelings will be ready to be used by the child. You may change password or contacts in the Setting if you need to.\n
+        \tThen Feelings will be ready to be used by your child. You may change password or contacts in the Setting if you need to.\n
     </string>
 
     <string name="start_up">Get Started</string>
