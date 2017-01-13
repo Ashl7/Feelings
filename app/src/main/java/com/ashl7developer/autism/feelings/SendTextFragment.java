@@ -101,6 +101,7 @@ public class SendTextFragment extends DialogFragment {
             public void onClick(View v) {
                 for(Contact contact: contactList)
                     sendSms(contact.getNumber());
+                Toast.makeText(getContext(), "Sent", Toast.LENGTH_LONG).show(); //sent shown once
             }
         });
 
@@ -161,8 +162,6 @@ public class SendTextFragment extends DialogFragment {
         // Check if app has permission to send an SMS
         if(SmsHelper.hasSmsPermission(getContext())) {
             SmsHelper.sendSMS(number, smsMessage, getContext(), null);
-            Toast.makeText(getContext(), "Sent",
-                    Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(

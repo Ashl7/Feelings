@@ -28,6 +28,7 @@ public class MainActivityPager extends AppCompatActivity implements
         // if first time using the app, launch welcome screen
         if (firstTimeUse) {
             Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
@@ -63,6 +64,7 @@ public class MainActivityPager extends AppCompatActivity implements
         if (id == R.id.action_setting) {
             // user cannot change the setting unless he has the password
             Intent intent = new Intent(this, PasswordCheckActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
