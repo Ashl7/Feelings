@@ -21,7 +21,7 @@ public class SettingActivity extends AppCompatActivity {
 
     // Go to add contacts activity
     public void onClickeditContacts(View view) {
-        Intent intent = new Intent(this, ContactsActivity.class);
+        Intent intent = new Intent(this, ContactSelectActivity.class);
         startActivity(intent);
     }
 
@@ -36,8 +36,4 @@ public class SettingActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onClickWelcome(View view) {
-        Intent intent = new Intent(this, WelcomeScreenActivity.class);
-        startActivity(intent);
-    }
 }

@@ -23,9 +23,9 @@ import java.util.ArrayList;
  * TODO: Make a listview of buttons, more scalable!
  *
  */
-public class ContactsActivity extends AppCompatActivity {
+public class ContactSelectActivity extends AppCompatActivity {
 
-    private static final String TAG = ContactsActivity.class.getName();
+    private static final String TAG = ContactSelectActivity.class.getName();
     static final int PICK_CONTACT_REQUEST = 1;  //request code
     private int viewNumber; // helper variable to have connection between buttons and textviews
 

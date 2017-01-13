@@ -37,7 +37,7 @@ public class PasswordCreateActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Created New Password", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ContactSelectActivity.class);
         startActivity(intent);
     }
 }

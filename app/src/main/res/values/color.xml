@@ -8,7 +8,7 @@
     <color name="colorAccent">#c8e8ff</color>
 
     <!-- dots inactive colors -->
-    <color name="dot_inactive">#ea80f447</color>
+    <color name="dot_inactive">#98df88</color>
     <!-- dots active colors -->
     <color name="dot_active">#e9246107</color>
 

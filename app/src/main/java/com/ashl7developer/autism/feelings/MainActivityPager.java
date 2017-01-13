@@ -27,7 +27,7 @@ public class MainActivityPager extends AppCompatActivity implements
         boolean passwordSet = sharedPref.getBoolean("passwordSet", false);
         // if pin is not set, go to the PasswordCreateActivity to set it up for the first up
         if (!passwordSet) {
-            Intent intent = new Intent(getApplicationContext(), PasswordCreateActivity.class);
+            Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
             startActivity(intent);
         }
 

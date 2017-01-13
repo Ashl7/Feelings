@@ -37,15 +37,20 @@
 
     <string name="slide1_title">Easier Communication for Autistic Children</string>
     <string name="slide1_desc">
-        Feelings makes communication between your child and you easier.\n
-        When your child has a tough time expressing his feelings, he may select an emoji representing his emotion on Feelings, and a text will be sent to you or anyone in Feeling\'s contact list.
+        Feelings makes communication between your child and you easier.\n\n
+        When your child has a tough time expressing his feelings,
+        he may select an emoji representing his emotion on Feelings,
+        and a text will be sent to you or anyone in Feelings\' contact list.
     </string>
 
     <string name="slide2_title">How To Use</string>
     <string name="slide2_desc">
-        Please choose a password for the Settings. This is to prevent the child from accessing the Setting and manipulating the app\'s data.\n
-        Then, select the contacts you wish the text to be sent. You may select 5 different contacts.\n
-        Then the app will be ready to use by the child. You may change password or contacts in the Setting if you need to.\n
+        Firstly choose a password for the app.
+        This is to prevent the child from accessing the Settings and manipulating the app\'s data.\n
+        Secondly, select the contacts you wish the texts to be sent to.
+        You may select up to 5 different contacts.\n
+        Then Feelings will be ready to be used by the child.
+        You may change password or contacts in the Setting if you need to.\n
     </string>
 
     <string name="start_up">Start the App</string>

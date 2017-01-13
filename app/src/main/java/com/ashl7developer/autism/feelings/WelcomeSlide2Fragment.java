@@ -41,7 +41,7 @@ public class WelcomeSlide2Fragment extends Fragment {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivityPager.class);
+                Intent intent = new Intent(getActivity(), PasswordCreateActivity.class);
                 startActivity(intent);
             }
         });
