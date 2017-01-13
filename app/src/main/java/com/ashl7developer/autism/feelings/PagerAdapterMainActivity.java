@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class PagerAdapterMainActivity extends FragmentPagerAdapter {
 
     private static final int NUM_FRAGMENTS = 2;      // Number of tabs
-    private static final String[] TAB_NAMES = {"FEELINGS", "CONTACTS"};  // Tab titles
+    private static final String[] TAB_NAMES = {"FEELINGS", "SEND TO"};  // Tab titles
 
 
     public PagerAdapterMainActivity(FragmentManager fm) {

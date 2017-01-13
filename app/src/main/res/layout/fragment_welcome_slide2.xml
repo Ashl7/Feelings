@@ -4,29 +4,61 @@
     android:layout_height="match_parent"
     tools:context="com.ashl7developer.autism.feelings.WelcomeSlide2Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="@string/slide2_title"
+        android:textStyle="bold"
+        android:textColor="#7FBA72"
+        android:textSize="28sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/desc"
+        android:text="@string/slide2_desc"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/title"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_app_button"
+        android:text="@string/start_up"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/desc"
+        style="@style/my_wide_buttons"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/left_bullet"
-        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
-        android:text="0"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/dot_inactive"/>
+        android:textColor="@color/dot_inactive"
+        android:layout_marginBottom="15dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/right_bullet"
         android:layout_toRightOf="@id/left_bullet"
-        android:text="0"
+        android:layout_marginLeft="5dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/dot_active"/>
+        android:textColor="@color/dot_active"
+        android:layout_marginBottom="15dp"/>
 
 </RelativeLayout>
