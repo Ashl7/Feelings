@@ -100,17 +100,6 @@ public class ContactSelectActivity extends AppCompatActivity {
     }
     public void onSaveButtonClick(View view) {
         database.close(); //close database
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
-                Context.MODE_PRIVATE);
-        boolean firstTimeUse = sharedPref.getBoolean("firstTime", true);
-        // if first time using the app, launch welcome screen
-        if (firstTimeUse) {
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("firstTime", false);
-            editor.commit();
-            Intent intent = new Intent(getApplicationContext(), MainActivityPager.class);
-            startActivity(intent);
-        }
         finish();
     }
 

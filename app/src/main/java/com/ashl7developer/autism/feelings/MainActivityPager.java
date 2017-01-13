@@ -24,14 +24,11 @@ public class MainActivityPager extends AppCompatActivity implements
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
                 Context.MODE_PRIVATE);
-        boolean firstTimeUse = sharedPref.getBoolean("firstTime", true);
+        boolean isPasswordSet = sharedPref.getBoolean("passwordSet", false);
 
         // if first time using the app, launch welcome screen
-        if (firstTimeUse) {
-            Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("firstTime", true);
-            editor.commit();
+        if (!isPasswordSet) {
+            Intent intent = new Intent(getApplicationContext(), PasswordCreateActivity.class);
             startActivity(intent);
         }
 

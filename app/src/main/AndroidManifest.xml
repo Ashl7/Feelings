@@ -10,12 +10,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name_long"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivityPager">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".MainActivityPager">
         </activity>
         <activity
             android:name=".ContactSelectActivity"
@@ -31,12 +27,14 @@
             android:name=".PasswordCheckActivity"
             android:label="@string/app_name"
             android:noHistory="true" />
-        <activity
-            android:name=".WelcomeScreenActivity"
-            android:label="@string/app_name"
-            android:noHistory="true"/>
         <!-- removes the activity from stack history, so when user presses back, it doesn't go back to this -->
-
+        <activity
+            android:name=".WelcomeScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

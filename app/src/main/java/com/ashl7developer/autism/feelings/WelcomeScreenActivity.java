@@ -28,12 +28,18 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.password),
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.password),
                 Context.MODE_PRIVATE);
+        boolean firstTimeUse = sharedPreferences.getBoolean("firstTime", true);
+        if(!firstTimeUse) {
+            Intent intent = new Intent(getApplicationContext(), MainActivityPager.class);
+            startActivity(intent);
+        }
+    }
 
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("firstTime", false);
-        editor.commit();
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         // make notification bar transparent
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -47,5 +53,4 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new PagerAdapterWelcomeScreen(getSupportFragmentManager()));
     }
-
 }

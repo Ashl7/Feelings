@@ -1,7 +1,9 @@
 package com.ashl7developer.autism.feelings;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -41,7 +43,12 @@ public class WelcomeSlide2Fragment extends Fragment {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PasswordCreateActivity.class);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.password),
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("firstTime", false);
+                editor.commit();
+                Intent intent = new Intent(getActivity(), MainActivityPager.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
